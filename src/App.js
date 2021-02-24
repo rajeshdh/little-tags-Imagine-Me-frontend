@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom'
 import { IntlProvider } from 'react-intl'
 
+import HomePage from './layouts/Home'
+
 import translation_en from './translations/en.json'
 import translation_hi from './translations/hi.json'
 
-const HomePage = lazy(() => import('./layouts/Home'))
+
 const translation = {
   en: translation_en,
   hi: translation_hi
