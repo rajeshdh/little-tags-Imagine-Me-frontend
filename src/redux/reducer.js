@@ -1,5 +1,12 @@
+import getLocale from '../Utils/getLocale'
+
+const availableLanguages = ['en', 'hi']
+const userPreferredLanguage = getLocale()
+
+const locale = availableLanguages.includes(userPreferredLanguage) ? userPreferredLanguage : 'en'
+
 const initialState = {
-    locale: 'en'
+    locale
 }
 
 export default function reducer(state = initialState, action) {
