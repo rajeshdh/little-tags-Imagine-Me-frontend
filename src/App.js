@@ -33,9 +33,9 @@ function App({ locale }) {
 
 
       {/* FOOTER HERE */}
-      <footer>
+      {/* <footer>
         footer
-      </footer>
+      </footer> */}
     </IntlProvider>
   );
 }
