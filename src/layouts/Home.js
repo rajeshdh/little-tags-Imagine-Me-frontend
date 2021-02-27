@@ -38,7 +38,7 @@ export default function Home() {
                 image={category.image} />
             )}
         </Slider>
-        <Slider {...settingsForMainSlider} className="h-2/3">
+        <Slider {...settingsForMainSlider} className="h-full">
             {mainCarouselData.map((carousel, index) => <MainCarouselCard
                 key={`mainCarouselId${index}`}
                 title={carousel.title}
