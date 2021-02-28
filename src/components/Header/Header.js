@@ -1,85 +1,40 @@
-import React, { useState } from 'react';
-
 import LanguageDropdown from "../LanguageDropdown/LanguageDropdown";
+import SearchBar from "./SearchBar";
+import NavButton from "./NavButton";
+import NavLink from "./NavLink";
+import Logo from "./Logo";
 
+import { CartIcon, LoginIcon } from "../../IconSet";
 
-function Header({ changeLocale }) {
-  const [isOpen, setisOpen] = useState(false);
-
-  function handleClick() {
-    setisOpen(!isOpen);
-  }
+function Header() {
 
   return (<header>
-    <nav className="flex flex-wrap items-center justify-between bg-sp-white ml-20 p-1">
+    <nav className="flex flex-wrap items-center justify-between bg-sp-white ml-5 md:ml-20 p-1">
       <div className="flex-none ">
-        <a
-          className="text-l font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-sp-heading-blue"
-          href="test"
-        >
-          shopay
-            </a>
+      <Logo />
       </div>
       <div className="flex-grow">
 
-        <a href="#" className=" text-black font-bold hover:text-blue-500 px-3 uppercase">explore</a>
-        <a href="#" className=" text-black font-bold hover:text-blue-500 px-3 uppercase">trending</a>
+        <NavLink>explore</NavLink>
+        <NavLink>trending</NavLink>
 
       </div>
       <div className="flex-none">
-        <div className=" inline-flex items-center">
-          <button className=" text-black font-bold px-4 rounded inline-flex items-center uppercase">
-            <svg className="fill-current w-4 h-4 mr-2" width="16" height="16" viewBox="0 0 16 16" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M15.3686 11.343H4.74774L5.28102 10.1351L14.1416 10.1173C14.4412 10.1173 14.698 9.87926 14.7515 9.55002L15.9786 1.91199C16.0107 1.71166 15.9625 1.50539 15.8448 1.3487C15.7867 1.27159 15.7141 1.20947 15.6322 1.16666C15.5502 1.12385 15.4609 1.10137 15.3704 1.10078L4.09854 1.05913L4.00223 0.555349C3.94159 0.23404 3.6812 0 3.38513 0H0.629584C0.462608 0 0.302471 0.0737641 0.184401 0.205065C0.066331 0.336366 0 0.514449 0 0.700136C0 0.885824 0.066331 1.06391 0.184401 1.19521C0.302471 1.32651 0.462608 1.40027 0.629584 1.40027H2.87504L3.29595 3.62563L4.33218 9.20491L2.99811 11.6266C2.92882 11.7306 2.8871 11.8541 2.87764 11.9831C2.86818 12.1121 2.89138 12.2414 2.9446 12.3565C3.05161 12.5925 3.26742 12.7413 3.50641 12.7413H4.62646C4.38768 13.094 4.25871 13.5236 4.25906 13.965C4.25906 15.0876 5.07948 16 6.08895 16C7.09843 16 7.91885 15.0876 7.91885 13.965C7.91885 13.5227 7.78687 13.0924 7.55144 12.7413H10.4247C10.1859 13.094 10.0569 13.5236 10.0573 13.965C10.0573 15.0876 10.8777 16 11.8872 16C12.8967 16 13.7171 15.0876 13.7171 13.965C13.7171 13.5227 13.5851 13.0924 13.3497 12.7413H15.3704C15.7164 12.7413 16 12.4279 16 12.0412C15.999 11.8557 15.932 11.6782 15.8137 11.5474C15.6954 11.4166 15.5354 11.3431 15.3686 11.343ZM4.36072 2.43957L14.6303 2.47725L13.6243 8.7408L5.55746 8.75666L4.36072 2.43957ZM6.08895 14.5918C5.77862 14.5918 5.52536 14.3102 5.52536 13.965C5.52536 13.6199 5.77862 13.3383 6.08895 13.3383C6.39929 13.3383 6.65255 13.6199 6.65255 13.965C6.65255 14.1313 6.59317 14.2907 6.48747 14.4082C6.38178 14.5258 6.23843 14.5918 6.08895 14.5918ZM11.8872 14.5918C11.5769 14.5918 11.3236 14.3102 11.3236 13.965C11.3236 13.6199 11.5769 13.3383 11.8872 13.3383C12.1975 13.3383 12.4508 13.6199 12.4508 13.965C12.4508 14.1313 12.3914 14.2907 12.2857 14.4082C12.18 14.5258 12.0367 14.5918 11.8872 14.5918Z" fill="black" />
-            </svg>
-
-            <span>cart</span>
-          </button>
+        <div className="inline-flex items-center">
+          <NavButton>
+            <CartIcon />
+            <span className="hidden md:inline-block">cart</span>
+          </NavButton>
           <LanguageDropdown />
-         
-          <button className=" text-black font-bold px-4 rounded inline-flex items-center uppercase">
-            <svg className="fill-current w-4 h-4 mr-2" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15.3723 13.0573C14.9709 12.1591 14.3885 11.3433 13.6574 10.6553C12.9285 9.96524 12.0651 9.41508 11.1149 9.03518C11.1064 9.03116 11.0979 9.02915 11.0893 9.02513C12.4149 8.1206 13.2766 6.64724 13.2766 4.98492C13.2766 2.23116 10.9149 0 8 0C5.08513 0 2.72344 2.23116 2.72344 4.98492C2.72344 6.64724 3.58514 8.1206 4.91066 9.02713C4.90215 9.03116 4.89364 9.03316 4.88513 9.03719C3.93194 9.41708 3.07663 9.96181 2.34259 10.6573C1.61219 11.3459 1.02984 12.1615 0.627709 13.0593C0.232652 13.9382 0.0195891 14.8805 5.32039e-05 15.8352C-0.000514675 15.8566 0.00346833 15.878 0.0117677 15.8979C0.020067 15.9179 0.0325146 15.9361 0.0483771 15.9515C0.0642397 15.9669 0.0831961 15.9791 0.104129 15.9874C0.125063 15.9957 0.14755 16 0.170265 16H1.44685C1.54047 16 1.61494 15.9296 1.61706 15.8432C1.65962 14.2915 2.31919 12.8382 3.48514 11.7367C4.69151 10.597 6.29363 9.96985 8 9.96985C9.70637 9.96985 11.3085 10.597 12.5149 11.7367C13.6808 12.8382 14.3404 14.2915 14.3829 15.8432C14.3851 15.9317 14.4595 16 14.5531 16H15.8297C15.8524 16 15.8749 15.9957 15.8959 15.9874C15.9168 15.9791 15.9358 15.9669 15.9516 15.9515C15.9675 15.9361 15.9799 15.9179 15.9882 15.8979C15.9965 15.878 16.0005 15.8566 15.9999 15.8352C15.9787 14.8744 15.768 13.9397 15.3723 13.0573ZM8 8.44221C7.02341 8.44221 6.10427 8.08241 5.41278 7.42915C4.7213 6.77588 4.34045 5.90754 4.34045 4.98492C4.34045 4.06231 4.7213 3.19397 5.41278 2.5407C6.10427 1.88744 7.02341 1.52764 8 1.52764C8.97659 1.52764 9.89573 1.88744 10.5872 2.5407C11.2787 3.19397 11.6595 4.06231 11.6595 4.98492C11.6595 5.90754 11.2787 6.77588 10.5872 7.42915C9.89573 8.08241 8.97659 8.44221 8 8.44221Z" fill="black" />
-            </svg>
-            <span>login</span>
-          </button>
+
+          <NavButton>
+            <LoginIcon />
+            <span className="hidden md:inline-block">login</span>
+          </NavButton>
         </div>
-        <div className={`p-6 ${isOpen ? "inline-block" : "hidden"} `}>
-          <div className="bg-white flex items-center rounded-full shadow-xl animate-bottom-top">
-            <input className="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none" id="search" type="text" placeholder="Search" />
-
-            <div className="p-1">
-              <button className="bg-sp-btn-primary hover:bg-sp-btn-primary-dark text-white rounded-full p-2 focus:outline-none w-10 h-10 flex items-center justify-center">
-                <svg width="41" height="39" viewBox="0 0 41 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M37.3702 34.0723L27.4171 24.1191C29.3451 21.7377 30.5059 18.7116 30.5059 15.4158C30.5059 7.77708 24.2905 1.56165 16.6518 1.56165C9.01315 1.56165 2.79785 7.77702 2.79785 15.4158C2.79785 23.0545 9.01322 29.27 16.6519 29.27C19.9477 29.27 22.9737 28.1091 25.3551 26.1812L35.3081 36.1343C35.5925 36.4187 35.9658 36.5616 36.3392 36.5616C36.7125 36.5616 37.0859 36.4187 37.3702 36.1343C37.9404 35.5641 37.9404 34.6425 37.3702 34.0723ZM16.6519 26.3533C10.6203 26.3533 5.71451 21.4475 5.71451 15.4158C5.71451 9.38408 10.6203 4.47827 16.6519 4.47827C22.6835 4.47827 27.5893 9.38408 27.5893 15.4158C27.5893 21.4475 22.6834 26.3533 16.6519 26.3533Z" fill="#F9F9F9" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-
-
-        {!isOpen && (<button
-          className="bg-sp-btn-primary hover:bg-sp-btn-primary-dark text-white font-bold p-4 mx-1 rounded items-center justify-center"
-          onClick={handleClick}
-        >
-          <svg className="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" width="41" height="39" viewBox="0 0 41 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M37.3702 34.0723L27.4171 24.1191C29.3451 21.7377 30.5059 18.7116 30.5059 15.4158C30.5059 7.77708 24.2905 1.56165 16.6518 1.56165C9.01315 1.56165 2.79785 7.77702 2.79785 15.4158C2.79785 23.0545 9.01322 29.27 16.6519 29.27C19.9477 29.27 22.9737 28.1091 25.3551 26.1812L35.3081 36.1343C35.5925 36.4187 35.9658 36.5616 36.3392 36.5616C36.7125 36.5616 37.0859 36.4187 37.3702 36.1343C37.9404 35.5641 37.9404 34.6425 37.3702 34.0723ZM16.6519 26.3533C10.6203 26.3533 5.71451 21.4475 5.71451 15.4158C5.71451 9.38408 10.6203 4.47827 16.6519 4.47827C22.6835 4.47827 27.5893 9.38408 27.5893 15.4158C27.5893 21.4475 22.6834 26.3533 16.6519 26.3533Z" fill="#F9F9F9" />
-          </svg>
-
-        </button>
-        )}
-        {isOpen && (<button type="button" className="font-bold py-2 px-4 mx-1 rounded items-center justify-center" onClick={handleClick}>
-          <svg className="fill-current w-4 h-4 mr-2" width="22" height="22" viewBox="0 0 22 22">
-            <path fillRule="evenodd" clipRule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z" />
-          </svg>
-        </button>
-        )}
-
+        <SearchBar className="hidden md:inline-block" />
       </div>
-
+      <SearchBar className="md:hidden" />
 
 
     </nav>

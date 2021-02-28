@@ -39,17 +39,17 @@ function LanguageDropdown({ locale, changeLocale}) {
       >
         {selection.html}
 
-        <span className="mr-1">{selection.value}</span>
+        <span className="hidden md:inline-block">{selection.value}</span>
 
         <p>{open ? <Close /> : <Open />}</p>
 
       </button>
       {open && (
-        <ul className="border block bg-white rounded-sm absolute z-50">
+        <ul className="border block bg-white rounded-sm absolute px-3 z-50">
           {languageOptions.map(item => (
            item.value !== selection.value && <li className="rounded-sm px-3 py-1  hover:bg-gray-100 flex items-center" key={item.id}>
               <button className="flex items-center uppercase" type="button" onClick={() => handleOnClick(item)}>
-                {item.html} <span className="m-1">{item.value}</span>
+                {item.html} <span className="hidden md:inline-block m-1">{item.value}</span>
               </button>
             </li>
           ))}
