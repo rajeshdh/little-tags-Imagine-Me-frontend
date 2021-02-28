@@ -11,6 +11,11 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+        case 'CHANGE_LOCALE':
+            return {
+                ...state,
+                locale: action.payload.value
+            };
         default: return state
     }
 }
