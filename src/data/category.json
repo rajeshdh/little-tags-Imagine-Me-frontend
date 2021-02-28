@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Laptop",
+        "image": "images/category-laptop.png"
+    },
+    {
+        "name": "T-Shirt",
+        "image": "images/category-t-shirt.png"
+    },
+    {
+        "name": "Jeans",
+        "image": "images/category-jeans.png"
+    },
+    {
+        "name": "Bags",
+        "image": "images/category-bag.png"
+    },
+    {
+        "name": "Hats",
+        "image": "images/category-hat.png"
+    }
+]

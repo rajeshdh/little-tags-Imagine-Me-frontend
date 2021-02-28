@@ -3,3 +3,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body,
+body>div {
+    height: 100%;
+}
+
+.slick-track {
+    display: flex !important;
+}
+
+.slick-slide {
+    height: inherit !important;
+}
+.slick-list{
+    display: flex;
+    height: 100%;
+}
+.slick-list .slick-slide>div{
+    height: 100%;
+}
