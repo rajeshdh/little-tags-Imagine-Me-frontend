@@ -1,5 +1,5 @@
 const ArrowNext = ({ onClick }) => <div
-    className="bg-white rounded-full p-2.5 shadow-sm absolute z-10 top-1/2 transform -translate-y-1/2 right-5 cursor-pointer"
+    className="bg-white opacity-80 rounded-full p-2.5 shadow-sm absolute z-10 top-1/2 transform -translate-y-1/2 right-5 cursor-pointer"
     onClick={onClick}
 >
     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -8,7 +8,7 @@ const ArrowNext = ({ onClick }) => <div
 </div>
 
 const ArrowPrev = ({ onClick }) => <div
-    className="bg-white rounded-full p-2.5 shadow-sm absolute z-10 top-1/2 transform -translate-y-1/2 left-5 cursor-pointer"
+    className="bg-white opacity-80 rounded-full p-2.5 shadow-sm absolute z-10 top-1/2 transform -translate-y-1/2 left-5 cursor-pointer"
     onClick={onClick}
 >
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

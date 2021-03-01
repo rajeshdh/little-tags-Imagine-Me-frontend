@@ -1,6 +1,6 @@
-function NavButton({children}){
+function NavButton({ className, children }) {
   return (
-    <button className=" text-black font-bold p-6 rounded inline-flex items-center uppercase">
+    <button className={`${className} text-black font-bold py-6 pl-6 rounded inline-flex items-center uppercase`}>
       {children}
     </button>
   )
