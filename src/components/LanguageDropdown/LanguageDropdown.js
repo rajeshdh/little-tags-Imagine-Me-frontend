@@ -31,7 +31,7 @@ function LanguageDropdown({ locale, changeLocale}) {
   }
 
   return (
-    <div className="inline-block relative">
+    <div className="inline-block relative pl-6">
       <button
         className="outline-none focus:outline-none border px-3 py-1 uppercase bg-white rounded-sm flex items-center min-w-80"
         onKeyPress={() => toggle(!open)}

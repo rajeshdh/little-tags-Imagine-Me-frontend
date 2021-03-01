@@ -9,35 +9,38 @@ import { CartIcon, LoginIcon } from "../../IconSet";
 function Header() {
 
   return (<header>
-    <nav className="flex flex-wrap items-center justify-between bg-sp-white ml-5 md:ml-20 p-1">
-      <div className="flex-none ">
-      <Logo />
-      </div>
-      <div className="flex-grow">
-
-        <NavLink>explore</NavLink>
-        <NavLink>trending</NavLink>
-
-      </div>
-      <div className="flex-none">
-        <div className="inline-flex items-center">
-          <NavButton>
-            <CartIcon />
-            <span className="hidden md:inline-block">cart</span>
-          </NavButton>
-          <LanguageDropdown />
-
-          <NavButton>
-            <LoginIcon />
-            <span className="hidden md:inline-block">login</span>
-          </NavButton>
+    <div className="relative">
+      <nav className="flex flex-wrap items-center justify-between bg-sp-white ml-5 md:mx-24">
+        <div className="flex-none ">
+        <Logo />
         </div>
-        <SearchBar className="hidden md:inline-block" />
-      </div>
-      <SearchBar className="md:hidden" />
+        <div className="flex-grow">
+
+          <NavLink>explore</NavLink>
+          <NavLink>trending</NavLink>
+
+        </div>
+        <div className="flex-none">
+          <div className="inline-flex items-center">
+            <NavButton>
+              <CartIcon />
+              <span className="hidden md:inline-block">cart</span>
+            </NavButton>
+            <LanguageDropdown />
+
+            <NavButton>
+              <LoginIcon />
+              <span className="hidden md:inline-block">login</span>
+            </NavButton>
+          </div>
+        </div>
+        <SearchBar className="md:hidden" />
 
 
-    </nav>
+      </nav>
+          <SearchBar className="hidden absolute right-0 bottom-0 top-0 md:block" />
+      
+    </div>
 
   </header>)
 }

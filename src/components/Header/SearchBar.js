@@ -38,7 +38,7 @@ function SearchBar({className}) {
         </div>
 
         {!isOpen && (<button
-          className=" bg-sp-btn-primary hover:bg-sp-btn-primary-dark text-white font-bold p-4 mx-1 rounded items-center justify-center"
+          className=" bg-sp-btn-primary hover:bg-sp-btn-primary-dark text-white font-bold p-4 rounded items-center justify-center"
           onClick={handleClick}
         >
           <svg className="transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" width="41" height="39" viewBox="0 0 41 39" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +47,7 @@ function SearchBar({className}) {
 
         </button>
         )}
-        {isOpen && (<button type="button" className="font-bold py-2 px-4 mx-1 rounded items-center justify-center" onClick={handleClick}>
+        {isOpen && (<button type="button" className="font-bold py-2 px-4 rounded items-center justify-center" onClick={handleClick}>
           <svg className="fill-current w-4 h-4 mr-2" width="22" height="22" viewBox="0 0 22 22">
             <path fillRule="evenodd" clipRule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z" />
           </svg>
