@@ -1,8 +1,10 @@
-function NavLink({ className, children }) {
+import { Link } from "react-router-dom";
+
+function NavLink({ className, children, to }) {
   return (
-    <a href="#" className={`${className} text-black font-bold hover:text-blue-500 pl-6 uppercase`}>
+    <Link to={to} className={`${className} text-black font-bold hover:text-blue-500 pl-6 uppercase`}>
       {children}
-    </a>
+    </Link>
   )
 }
 export default NavLink;

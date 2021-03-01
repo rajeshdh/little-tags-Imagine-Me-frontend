@@ -7,6 +7,9 @@ import Logo from "./Logo";
 import { CartIcon, LoginIcon } from "../../IconSet";
 import BottomNavigation from "./BottomNavigation";
 import { FormattedMessage } from "react-intl";
+import {
+  Link
+} from "react-router-dom";
 
 function Header() {
 
@@ -16,30 +19,33 @@ function Header() {
         <div className="flex items-center">
           <Logo />
           <div className="hidden sm:block">
-            <NavLink>
+            <NavLink to="/expore">
               <FormattedMessage id="explore" />
             </NavLink>
-            <NavLink>
+            <NavLink to="/trending">
               <FormattedMessage id="trending" />
             </NavLink>
           </div>
         </div>
         <div className="hidden sm:block">
           <div className="inline-flex items-center">
+            <Link to="/cart">
             <NavButton>
               <CartIcon />
               <span className="hidden md:inline-block">
                 <FormattedMessage id="cart" />
               </span>
             </NavButton>
+            </Link>
             <LanguageDropdown />
-
+            <Link to="/login">
             <NavButton>
               <LoginIcon />
               <span className="hidden md:inline-block">
                 <FormattedMessage id="login" />
               </span>
             </NavButton>
+            </Link>
           </div>
         </div>
         <div className="absolute right-3 top-1 sm:hidden">
