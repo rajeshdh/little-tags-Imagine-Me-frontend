@@ -6,6 +6,7 @@ import Logo from "./Logo";
 
 import { CartIcon, LoginIcon } from "../../IconSet";
 import BottomNavigation from "./BottomNavigation";
+import { FormattedMessage } from "react-intl";
 
 function Header() {
 
@@ -15,26 +16,34 @@ function Header() {
         <div className="flex items-center">
           <Logo />
           <div className="hidden sm:block">
-            <NavLink>explore</NavLink>
-            <NavLink>trending</NavLink>
+            <NavLink>
+              <FormattedMessage id="explore" />
+            </NavLink>
+            <NavLink>
+              <FormattedMessage id="trending" />
+            </NavLink>
           </div>
         </div>
         <div className="hidden sm:block">
           <div className="inline-flex items-center">
             <NavButton>
               <CartIcon />
-              <span className="hidden md:inline-block">cart</span>
+              <span className="hidden md:inline-block">
+                <FormattedMessage id="cart" />
+              </span>
             </NavButton>
             <LanguageDropdown />
 
             <NavButton>
               <LoginIcon />
-              <span className="hidden md:inline-block">login</span>
+              <span className="hidden md:inline-block">
+                <FormattedMessage id="login" />
+              </span>
             </NavButton>
           </div>
         </div>
         <div className="absolute right-3 top-1 sm:hidden">
-            <LanguageDropdown />
+          <LanguageDropdown />
         </div>
       </nav>
       <SearchBar className="md:hidden w-10/12 m-auto" />

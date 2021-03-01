@@ -1,4 +1,8 @@
 {
+    "explore": "explore",
+    "trending": "trending",
+    "login": "login",
+    "cart": "cart",
     "Laptop": "Laptop",
     "T-Shirt": "T-Shirt",
     "Jeans": "Jeans",
