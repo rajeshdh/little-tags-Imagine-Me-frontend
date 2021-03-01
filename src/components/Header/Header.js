@@ -10,17 +10,15 @@ function Header() {
 
   return (<header>
     <div className="relative">
-      <nav className="flex flex-wrap mx-5 items-center justify-between bg-sp-white md:mx-24">
-        <div className="flex-none ">
-        <Logo />
+      <nav className="flex flex-wrap mx-3 items-center justify-center sm:justify-between bg-sp-white md:mx-24 sm:mx-10 ">
+        <div className="flex items-center">
+          <Logo />
+          <div className="hidden sm:block">
+            <NavLink>explore</NavLink>
+            <NavLink>trending</NavLink>
+          </div>
         </div>
-        <div className="flex-grow">
-
-          <NavLink>explore</NavLink>
-          <NavLink>trending</NavLink>
-
-        </div>
-        <div className="flex-none">
+        <div className="hidden sm:block">
           <div className="inline-flex items-center">
             <NavButton>
               <CartIcon />
@@ -34,12 +32,13 @@ function Header() {
             </NavButton>
           </div>
         </div>
-        <SearchBar className="md:hidden" />
-
-
+        <div className="absolute right-3 top-1 sm:hidden">
+            <LanguageDropdown />
+        </div>
       </nav>
-          <SearchBar className="hidden absolute right-0 bottom-0 top-0 md:block" />
-      
+      <SearchBar className="md:hidden w-10/12 m-auto" />
+      <SearchBar className="hidden absolute right-0 bottom-0 top-0 md:block" />
+
     </div>
 
   </header>)
