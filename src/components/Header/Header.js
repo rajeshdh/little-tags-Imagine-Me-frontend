@@ -10,7 +10,7 @@ function Header() {
 
   return (<header>
     <div className="relative">
-      <nav className="flex flex-wrap items-center justify-between bg-sp-white ml-5 md:mx-24">
+      <nav className="flex flex-wrap mx-5 items-center justify-between bg-sp-white md:mx-24">
         <div className="flex-none ">
         <Logo />
         </div>

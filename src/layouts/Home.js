@@ -29,7 +29,7 @@ export default function Home() {
         nextArrow: <ArrowNext />,
         prevArrow: <ArrowPrev />
     }
-    return <div className="flex flex-col h-5/6 sm:mx-24 sm:flex-col-reverse">
+    return <div className="flex flex-col mx-5 h-5/6 md:mx-24 sm:flex-col-reverse">
 
         <Slider {...settingsForCategorySlider}>
             {categoryData.map((category, index) => <CategoryCarouselCard
