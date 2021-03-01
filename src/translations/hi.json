@@ -9,5 +9,12 @@
     "Bags": "बैग",
     "Hats": "टोपी",
     "Trending": "रुझान",
-    "Wear Trending Collections": "ट्रेंडिंग कलेक्शंस पहनें"
+    "Wear Trending Collections": "ट्रेंडिंग कलेक्शंस पहनें",
+    "register": "नया अकाउंट बनाएँ",
+    "signInInstead": "अन्यथा, लॉग इन करें",
+    "signUpInstead": "अन्यथा, नया अकाउंट बनाएँ",
+    "loginToStart" :"लॉग इन करके शुरुआत करें।",
+    "registerToStart": "अपना पंजीकरण कराकर शुरुआत करें।",
+    "registerNow": "अभी पंजीकरण करें",
+    "loginNow": "अभी लॉग इन करें"
 }

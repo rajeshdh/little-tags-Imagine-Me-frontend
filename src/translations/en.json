@@ -9,5 +9,13 @@
     "Bags": "Bags",
     "Hats": "Hats",
     "Trending": "Trending",
-    "Wear Trending Collections": "Wear Trending Collections"
+    "Wear Trending Collections": "Wear Trending Collections",
+    "register": "Register",
+    "signInInstead": "Sign In Instead",
+    "signUpInstead": "Sign Up Instead",
+    "loginToStart" : "Get started by logging in.",
+    "registerToStart": "Get started by Registering yourself.",
+    "registerNow": "Register Now",
+    "loginNow": "Login Now"
+
 }

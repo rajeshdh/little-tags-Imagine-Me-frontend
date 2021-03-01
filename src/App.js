@@ -1,10 +1,12 @@
 
 import { Suspense, lazy } from 'react'
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom'
+
+import Routes from "./routes";
+// import { HashRouter as Router } from "react-router-dom";
 import { IntlProvider } from 'react-intl'
 
-import HomePage from './layouts/Home'
+// import HomePage from './layouts/Home'
 import Header from './components/Header/Header'
 
 import translation_en from './translations/en.json'
@@ -22,13 +24,11 @@ function App({ locale }) {
   return (
     <IntlProvider locale={locale} messages={translation[locale]}>
       {/* HEADER COMPONENT HERE */}
-     <Header></Header>
+      <Header></Header>
 
       {/* MAIN CONTENTS HERE */}
       <Suspense fallback={<>Loading....</>}>
-        <Switch>
-          <Route path="/" exact component={HomePage} />
-        </Switch>
+          <Routes />
       </Suspense>
 
 
@@ -41,7 +41,7 @@ function App({ locale }) {
 }
 
 const mapStateToProps = state => {
-  const { locale } = state
+  const { localeReducer: {locale} } = state
   return { locale }
 }
 

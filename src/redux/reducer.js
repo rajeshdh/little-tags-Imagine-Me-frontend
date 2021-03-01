@@ -1,3 +1,5 @@
+import { combineReducers } from "redux";
+import auth from "./auth/reducer";
 import getLocale from '../Utils/getLocale'
 
 const availableLanguages = ['en', 'hi']
@@ -9,7 +11,7 @@ const initialState = {
     locale
 }
 
-export default function reducer(state = initialState, action) {
+const localeReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'CHANGE_LOCALE':
             return {
@@ -19,3 +21,10 @@ export default function reducer(state = initialState, action) {
         default: return state
     }
 }
+
+const rootReducer = combineReducers({
+    auth,
+    localeReducer
+});
+
+export default rootReducer;
