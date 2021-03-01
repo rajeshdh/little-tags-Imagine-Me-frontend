@@ -5,6 +5,7 @@ import NavLink from "./NavLink";
 import Logo from "./Logo";
 
 import { CartIcon, LoginIcon } from "../../IconSet";
+import BottomNavigation from "./BottomNavigation";
 
 function Header() {
 
@@ -40,7 +41,7 @@ function Header() {
       <SearchBar className="hidden absolute right-0 bottom-0 top-0 md:block" />
 
     </div>
-
+    <BottomNavigation />
   </header>)
 }
 
