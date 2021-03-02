@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CategoryCarouselCard /> should renders correctly (snapshot) 1`] = `
+<IntlProvider
+  defaultFormats={Object {}}
+  defaultLocale="en"
+  formats={Object {}}
+  locale="en"
+  messages={
+    Object {
+      "Bags": "Bags",
+      "Hats": "Hats",
+      "Jeans": "Jeans",
+      "Laptop": "Laptop",
+      "T-Shirt": "T-Shirt",
+      "Trending": "Trending",
+      "Wear Trending Collections": "Wear Trending Collections",
+      "cart": "cart",
+      "explore": "explore",
+      "login": "login",
+      "loginNow": "Login Now",
+      "loginToStart": "Get started by logging in.",
+      "register": "Register",
+      "registerNow": "Register Now",
+      "registerToStart": "Get started by Registering yourself.",
+      "signInInstead": "Sign In Instead",
+      "signUpInstead": "Sign Up Instead",
+      "trending": "trending",
+    }
+  }
+  onError={[Function]}
+  textComponent={Symbol(react.fragment)}
+>
+  <CategoryCarouselCard
+    image="image"
+    title="Bags"
+  >
+    <div
+      className="relative rounded-full bg-center bg-contain bg-no-repeat shadow-md w-16 h-16 mr-5 sm:rounded sm:w-48 sm:h-56 sm:bg-cover transform hover:scale-110 my-4"
+      style={
+        Object {
+          "backgroundImage": "url(http://127.0.0.1:3001/image)",
+        }
+      }
+    >
+      <div
+        className="absolute bottom-5 text-center left-0 right-0 hidden sm:block"
+      >
+        <FormattedMessage
+          id="Bags"
+        >
+          Bags
+        </FormattedMessage>
+      </div>
+    </div>
+  </CategoryCarouselCard>
+</IntlProvider>
+`;
