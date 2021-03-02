@@ -1,10 +1,11 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Switch } from "react-router-dom";
 import Home from "../pages/Home";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import Checkout from "../pages/Checkout";
 import Route from "./Route";
+
+const Login = lazy(() => import("../pages/Login"))
+const Register = lazy(() => import("../pages/Register"))
+const Checkout = lazy(() => import("../pages/Checkout"))
 
 const Routes = () => {
 	return (
