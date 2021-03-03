@@ -3,6 +3,8 @@ import { Switch } from "react-router-dom";
 import Home from "../pages/Home/Index";
 import Route from "./Route";
 
+import Product from "../pages/Product";
+
 const Login = lazy(() => import("../pages/Login"))
 const Register = lazy(() => import("../pages/Register"))
 const Checkout = lazy(() => import("../pages/Checkout"))
@@ -13,6 +15,7 @@ const Routes = () => {
 	return (
 			<Switch>
 				<Route exact path="/"  component={Home}></Route>
+				<Route exact path="/product"  component={Product}></Route>
 				<Route exact path="/login" isLoginRoute component={Login} />
 				<Route exact path="/register" isLoginRoute component={Register} />
 				<Route exact path="/checkout" isPrivate component={Checkout} />
