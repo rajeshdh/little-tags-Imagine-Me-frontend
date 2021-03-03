@@ -16,6 +16,13 @@
     "loginToStart" : "Get started by logging in.",
     "registerToStart": "Get started by Registering yourself.",
     "registerNow": "Register Now",
-    "loginNow": "Login Now"
+    "loginNow": "Login Now",
+    "forgotPassword": "Forgot Your Password?",
+    "email": "Email:",
+    "password": "Password:",
+    "loginWithEmail": "Or Login With Email",
+    "signUpWithEmail":"Or Register With Email",
+    "loginWithFacebook": "Login with Facebook",
+    "signUPWithFacebook": "Sign Up with Facebook"
 
 }

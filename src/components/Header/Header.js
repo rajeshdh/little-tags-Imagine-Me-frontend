@@ -15,8 +15,8 @@ function Header() {
 
   return (<header>
     <div className="relative">
-      <nav className="flex flex-wrap mx-3 items-center justify-center sm:justify-between bg-sp-white md:mx-24 sm:mx-10 ">
-        <div className="flex items-center">
+      <nav className="flex flex-wrap mx-3 items-center justify-center sm:justify-between bg-sp-white md:mx-24 sm:mx-10 border-b sm:border-grey-400 sm:border-0">
+        <div className="flex items-center  ">
           <Logo />
           <div className="hidden sm:block">
             <NavLink to="/expore">
@@ -52,7 +52,7 @@ function Header() {
           <LanguageDropdown />
         </div>
       </nav>
-      <SearchBar className="md:hidden w-10/12 m-auto" />
+      <SearchBar className="md:hidden w-11/12 m-auto" />
       <SearchBar className="hidden absolute right-0 bottom-0 top-0 md:block" />
 
     </div>

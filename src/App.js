@@ -1,5 +1,5 @@
 
-import { Suspense, lazy } from 'react'
+import { Suspense } from 'react'
 import { connect } from 'react-redux';
 
 import Routes from "./routes";

@@ -8,11 +8,13 @@ const languageOptions = [
   {
     id: 1,
     value: 'en',
+    text: 'English',
     html: <En />
   },
   {
     id: 2,
     value: 'hi',
+    text: 'हिन्दी',
     html: <Hi />
   },
 ];
@@ -33,23 +35,23 @@ function LanguageDropdown({ locale, changeLocale}) {
   return (
     <div className="inline-block relative sm:pl-6">
       <button
-        className="outline-none focus:outline-none border px-3 py-1 uppercase bg-white rounded-sm flex items-center min-w-80"
+        className="outline-none focus:outline-none border px-1 py-1 uppercase bg-white rounded-sm flex items-center min-w-80 text-xs md:text-base"
         onKeyPress={() => toggle(!open)}
         onClick={() => toggle(!open)}
       >
         {selection.html}
 
-        <span className="hidden md:inline-block">{selection.value}</span>
+        <span className="inline-block">{selection.text}</span>
 
         <p>{open ? <Close /> : <Open />}</p>
 
       </button>
       {open && (
-        <ul className="border block bg-white rounded-sm absolute px-3 z-50">
+        <ul className="border block bg-white rounded-sm absolute px-1 z-50">
           {languageOptions.map(item => (
-           item.value !== selection.value && <li className="rounded-sm px-3 py-1  hover:bg-gray-100 flex items-center" key={item.id}>
+           item.value !== selection.value && <li className="rounded-sm px-1 py-1 hover:bg-gray-100 flex items-center text-xs md:text-base" key={item.id}>
               <button className="flex items-center uppercase" type="button" onClick={() => handleOnClick(item)}>
-                {item.html} <span className="hidden md:inline-block m-1">{item.value}</span>
+                {item.html} <span className="inline-block m-1">{item.text}</span>
               </button>
             </li>
           ))}

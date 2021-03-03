@@ -15,6 +15,13 @@
     "signUpInstead": "अन्यथा, नया अकाउंट बनाएँ",
     "loginToStart" :"लॉग इन करके शुरुआत करें।",
     "registerToStart": "अपना पंजीकरण कराकर शुरुआत करें।",
-    "registerNow": "अभी पंजीकरण करें",
-    "loginNow": "अभी लॉग इन करें"
+    "registerNow": "अभी नया अकाउंट बनाएँ",
+    "loginNow": "अभी लॉग इन करें",
+    "forgotPassword": "पासवर्ड भूल गए?",
+    "email": "ईमेल:",
+    "password": "पासवर्ड:",
+    "loginWithEmail": "अथवा ईमेल से लॉगिन करें",
+    "signUpWithEmail": "अथवा ईमेल से नया अकाउंट बनाएँ",
+    "loginWithFacebook": "फेसबुक द्वारा लॉगिन करें",
+    "signUPWithFacebook" : "फेसबुक द्वारा नया अकाउंट बनाएँ"
 }
