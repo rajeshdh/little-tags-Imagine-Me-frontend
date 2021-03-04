@@ -38,7 +38,7 @@ export default function ProductCard({ details }) {
                                 {offer}% OFF
                             </div>
                         </div>
-                        <div className="mb-5 max-h-0 overflow-hidden transform transition-all duration-200 ease-in-out group-hover:max-h-full">
+                        <div className="mb-5 sm:max-h-0 overflow-hidden transform transition-all duration-200 ease-in-out group-hover:max-h-full">
                             <ProductFeatures features={features} clickable={false} />
                         </div>
                     </div>
