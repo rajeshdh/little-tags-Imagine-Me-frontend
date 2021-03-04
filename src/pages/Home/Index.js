@@ -1,13 +1,13 @@
 import Slider from 'react-slick'
-import CategoryCarouselCard from '../components/Cards/CategoryCarouselCard'
-import MainCarouselCard from '../components/Cards/MainCarouselCard';
-import { ArrowPrev, ArrowNext } from '../components/Slider/Arrows'
+import CategoryCarouselCard from '../../components/Cards/CategoryCarouselCard'
+import MainCarouselCard from '../../components/Cards/MainCarouselCard';
+import { ArrowPrev, ArrowNext } from '../../components/Slider/Arrows'
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import categoryData from '../data/category.json'
-import mainCarouselData from '../data/main-carousel.json'
+import categoryData from '../../data/category.json'
+import mainCarouselData from '../../data/main-carousel.json'
 
 export default function Home() {
     const settingsForCategorySlider = {
@@ -29,7 +29,7 @@ export default function Home() {
         nextArrow: <ArrowNext />,
         prevArrow: <ArrowPrev />
     }
-    return <div className="flex flex-col mx-3 sm:mx-10 h-5/6 md:mx-24 sm:flex-col-reverse">
+    return <div className="flex flex-col mx-3 h-5/6 sm:mx-10 md:mx-24 sm:flex-col-reverse">
 
         <Slider {...settingsForCategorySlider}>
             {categoryData.map((category, index) => <CategoryCarouselCard

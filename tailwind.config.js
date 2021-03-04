@@ -34,7 +34,7 @@ module.exports = {
   variants: {
     display: ["group-hover","responsive"],
     extend: {
-      scale: ["hover"]
+      maxHeight: ["group-hover"],
     }
   },
   plugins: [],

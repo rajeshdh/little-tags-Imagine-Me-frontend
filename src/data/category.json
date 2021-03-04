@@ -1,22 +1,26 @@
 [
     {
-        "name": "Laptop",
+        "name": "laptop",
         "image": "images/category-laptop.png"
     },
     {
-        "name": "T-Shirt",
+        "name": "shoe",
+        "image": "images/category-shoe.png"
+    },
+    {
+        "name": "t-shirt",
         "image": "images/category-t-shirt.png"
     },
     {
-        "name": "Jeans",
+        "name": "jeans",
         "image": "images/category-jeans.png"
     },
     {
-        "name": "Bags",
+        "name": "bags",
         "image": "images/category-bag.png"
     },
     {
-        "name": "Hats",
+        "name": "hats",
         "image": "images/category-hat.png"
     }
 ]
