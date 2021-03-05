@@ -1,11 +1,13 @@
 import React, { lazy } from "react";
 import { Switch } from "react-router-dom";
-import Home from "../pages/Home";
+import Home from "../pages/Home/Index";
 import Route from "./Route";
 
 const Login = lazy(() => import("../pages/Login"))
 const Register = lazy(() => import("../pages/Register"))
 const Checkout = lazy(() => import("../pages/Checkout"))
+const ProductPage = lazy(() => import("../pages/Product/Index"))
+
 
 const Routes = () => {
 	return (
@@ -14,6 +16,7 @@ const Routes = () => {
 				<Route exact path="/login" isLoginRoute component={Login} />
 				<Route exact path="/register" isLoginRoute component={Register} />
 				<Route exact path="/checkout" isPrivate component={Checkout} />
+				<Route exact path="/category/:category" component={ProductPage} />
 			</Switch>
 	);
 };
