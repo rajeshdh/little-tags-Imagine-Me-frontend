@@ -1,5 +1,5 @@
-import Size from './Feature/Size'
-import Color from './Feature/Color'
+import Size from './Feature/SizeFeature'
+import Color from './Feature/ColorFeature'
 import { FormattedMessage } from 'react-intl'
 
 export default function ProductFeatures({ features, clickable }) {

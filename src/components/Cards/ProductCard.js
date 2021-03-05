@@ -11,7 +11,6 @@ export default function ProductCard({ details }) {
         <Link className="group" to={`/product/${id}`}>
             <div className="relative h-full">
                 <div className="relative h-2/3 bg-center bg-contain bg-no-repeat flex items-end justify-center" style={{ backgroundImage: `url(${image})` }}>
-                    {/* <img style={{maxHeight: '95%'}} src={process.env.REACT_APP_BASE_URL + image} alt={title} /> */}
                 </div>
                 <div className="absolute w-full bottom-0" style={{ minHeight: '8rem' }}>
                     <div className="relative p-3 bg-white h-full">
