@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import auth from "./auth/reducer";
+import product from "./product/reducer"
 import getLocale from '../Utils/getLocale'
 
 const availableLanguages = ['en', 'hi']
@@ -24,7 +25,8 @@ const localeReducer = (state = initialState, action) => {
 
 const rootReducer = combineReducers({
     auth,
-    localeReducer
+    localeReducer,
+    product
 });
 
 export default rootReducer;

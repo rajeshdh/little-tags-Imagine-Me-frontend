@@ -1,26 +1,26 @@
 [
     {
         "name": "laptop",
-        "image": "https://firebasestorage.googleapis.com/v0/b/shopay-dev.appspot.com/o/category-laptop.png?alt=media&token=cf1c9558-2fb4-43cd-ade2-3e008b0e3719"
+        "image": "https://firebasestorage.googleapis.com/v0/b/shopay-dev.appspot.com/o/category-laptop.jpg?alt=media&token=74769807-10dc-44fb-9f1e-e236562addd3"
     },
     {
         "name": "shoe",
-        "image": "https://firebasestorage.googleapis.com/v0/b/shopay-dev.appspot.com/o/category-shoe.png?alt=media&token=603e40ab-42fd-4954-aab2-cb18230a3d9a"
+        "image": "https://firebasestorage.googleapis.com/v0/b/shopay-dev.appspot.com/o/category-shoe.jpeg?alt=media&token=94041c95-35d0-47e5-bb9c-9420e5b24f00"
     },
     {
         "name": "t-shirt",
-        "image": "https://firebasestorage.googleapis.com/v0/b/shopay-dev.appspot.com/o/category-t-shirt.png?alt=media&token=c55122b5-a3a8-4968-a3c6-e0c49b0b77b5"
+        "image": "https://firebasestorage.googleapis.com/v0/b/shopay-dev.appspot.com/o/category-t-shirt.jpeg?alt=media&token=fa38a812-c158-457c-a3e1-bd144836068d"
     },
     {
         "name": "jeans",
-        "image": "https://firebasestorage.googleapis.com/v0/b/shopay-dev.appspot.com/o/category-jeans.png?alt=media&token=81df6785-3ffb-41c8-866e-df5e0e5a4d7a"
+        "image": "https://firebasestorage.googleapis.com/v0/b/shopay-dev.appspot.com/o/category-jeans.jpeg?alt=media&token=77ad244a-e2cb-4ec5-b3ca-650813541bc3"
     },
     {
         "name": "bags",
-        "image": "https://firebasestorage.googleapis.com/v0/b/shopay-dev.appspot.com/o/category-bag.png?alt=media&token=d5d15117-9be9-4fc2-b057-ec01b007c94e"
+        "image": "https://firebasestorage.googleapis.com/v0/b/shopay-dev.appspot.com/o/category-bag.jpeg?alt=media&token=68875f54-3f94-478b-bb8f-0a620177890d"
     },
     {
         "name": "hats",
-        "image": "https://firebasestorage.googleapis.com/v0/b/shopay-dev.appspot.com/o/category-hat.png?alt=media&token=369d4ab5-4e53-4689-b31c-75c320e93cae"
+        "image": "https://firebasestorage.googleapis.com/v0/b/shopay-dev.appspot.com/o/category-hat.jpeg?alt=media&token=c982e27a-76af-4b89-a8c0-861e0fcd45ea"
     }
 ]

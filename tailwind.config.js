@@ -35,6 +35,9 @@ module.exports = {
     display: ["group-hover","responsive"],
     extend: {
       maxHeight: ["group-hover"],
+      stroke: ["hover"],
+      backgroundColor: ['checked'],
+      borderColor: ['checked'],
     }
   },
   plugins: [],

@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 import { FormattedNumber } from 'react-intl'
 import { HeartFilled, HeartOutline } from '../../IconSet/Heart'
 import ProductFeatures from "../ProductFeatures/ProductFeatures";
+import StarRating from "../StarRating/StarRating";
 
 export default function ProductCard({ details }) {
-    const { id, title, brand, currency, originalPrice, currentPrice, offer, features, items, image } = details
+    const { id, title, brand, rating, currency, originalPrice, currentPrice, offer, features, items, image } = details
 
 
     return <div className="relative h-96 border border-gray-200 shadow-md transform delay-200 transition-all">
@@ -14,6 +15,7 @@ export default function ProductCard({ details }) {
                 </div>
                 <div className="absolute w-full bottom-0" style={{ minHeight: '8rem' }}>
                     <div className="relative p-3 bg-white h-full">
+                        <StarRating rating={rating} />
                         <div className="uppercase text-gray-500 text-sm">{brand}</div>
                         <div title={title} className="text-base font-medium h-6 overflow-hidden truncate">
                             {title}
