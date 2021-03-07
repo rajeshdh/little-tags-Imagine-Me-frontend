@@ -1,4 +1,3 @@
-// import authActions from "./auth/actions";
 import { CHANGE_LOCALE } from './actionTypes';
 
 export const changeLocale = (payload) => {
@@ -7,10 +6,3 @@ export const changeLocale = (payload) => {
       payload
   };
 }
-
-// const actions = {
-//   authActions,
-//   changeLocale
-// }
-
-// export default actions;

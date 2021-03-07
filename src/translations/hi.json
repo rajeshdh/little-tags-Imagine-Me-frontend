@@ -13,7 +13,7 @@
     "register": "नया अकाउंट बनाएँ",
     "signInInstead": "अन्यथा, लॉग इन करें",
     "signUpInstead": "अन्यथा, नया अकाउंट बनाएँ",
-    "loginToStart" :"लॉग इन करके शुरुआत करें।",
+    "loginToStart": "लॉग इन करके शुरुआत करें।",
     "registerToStart": "अपना पंजीकरण कराकर शुरुआत करें।",
     "registerNow": "अभी नया अकाउंट बनाएँ",
     "loginNow": "अभी लॉग इन करें",
@@ -23,5 +23,12 @@
     "loginWithEmail": "अथवा ईमेल से लॉगिन करें",
     "signUpWithEmail": "अथवा ईमेल से नया अकाउंट बनाएँ",
     "loginWithFacebook": "फेसबुक द्वारा लॉगिन करें",
-    "signUPWithFacebook" : "फेसबुक द्वारा नया अकाउंट बनाएँ"
+    "signUPWithFacebook": "फेसबुक द्वारा नया अकाउंट बनाएँ",
+    "searchResult": "{keyWord} के लिए परिणाम दिखा रहा है",
+    "addToCart": "कार्ट में जोड़ें",
+    "inStock": "स्टॉक में {stock}",
+    "price": "रेट",
+    "brands": "ब्रांड",
+    "rating": "रेटिंग",
+    "apply" : "लागू"
 }

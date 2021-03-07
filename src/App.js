@@ -8,6 +8,7 @@ import { IntlProvider } from 'react-intl'
 
 // import HomePage from './layouts/Home'
 import Header from './components/Header/Header'
+import MainSpinner from './components/LoadingSpinners/MainSpinner'
 
 import translation_en from './translations/en.json'
 import translation_hi from './translations/hi.json'
@@ -27,7 +28,7 @@ function App({ locale }) {
       <Header></Header>
 
       {/* MAIN CONTENTS HERE */}
-      <Suspense fallback={<>Loading....</>}>
+      <Suspense fallback={<MainSpinner />}>
           <Routes />
       </Suspense>
 
