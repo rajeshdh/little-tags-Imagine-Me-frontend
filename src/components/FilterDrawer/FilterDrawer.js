@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FormattedNumber } from "react-intl";
+import { FormattedMessage, FormattedNumber } from "react-intl";
 import { useSelector, useDispatch } from 'react-redux'
 
 import RangeSlider from '../../components/RangeSlider/RangeSlider'
@@ -38,7 +38,7 @@ export default function FilterDrawer({ show, onClick, requestProducts }) {
                 <div className="float-right mr-2 text-4xl cursor-pointer" onClick={onClick} >&times;</div>
                 <div className="mt-10 px-4">
                     <div className="font-semibold tracking-wide uppercase mb-2">
-                        price
+                        <FormattedMessage id="price" defaultMessage="price" />
                     </div>
                     <div className="my-2">
                         <FormattedNumber style="currency" value={filterCriteria.price[0] ?? price[0]} currency="INR" />  - <FormattedNumber style="currency" value={filterCriteria.price[1] ?? price[1]} currency="INR" />
@@ -56,7 +56,7 @@ export default function FilterDrawer({ show, onClick, requestProducts }) {
                     </div>
 
                     <div className="font-semibold tracking-wide uppercase mb-2">
-                        brands
+                        <FormattedMessage id="brands" defaultMessage="brands" />
                     </div>
                     <div className="px-3">
                         <CheckboxGroup name="brands" onChange={checkboxChangeHandler} value={filterCriteria.brands} >
@@ -68,7 +68,7 @@ export default function FilterDrawer({ show, onClick, requestProducts }) {
                     <div className="mt-3 mb-3 border-b border-gray-300">
                     </div>
                     <div className="font-semibold tracking-wide uppercase mb-2">
-                        rating
+                        <FormattedMessage id="rating" defaultMessage="rating" />
                     </div>
                     <div className="px-3">
                         <CheckboxGroup name="rating" value={filterCriteria.rating} onChange={checkboxChangeHandler}>
@@ -79,7 +79,9 @@ export default function FilterDrawer({ show, onClick, requestProducts }) {
 
             </div>
             <div className="absolute bg-white p-2 inset-x-0 bottom-0">
-                <button className="bg-sp-btn-primary text-white px-5 py-2 rounded float-right" name="filter_submit" onClick={requestProducts}>Apply</button>
+                <button className="bg-sp-btn-primary text-white px-5 py-2 rounded float-right" name="filter_submit" onClick={requestProducts}>
+                    <FormattedMessage id="apply" defaultMessage="Apply" />
+                </button>
             </div>
         </div>
     </BackDrop>

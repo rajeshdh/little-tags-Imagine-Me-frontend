@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FormattedNumber } from 'react-intl'
+import { FormattedMessage, FormattedNumber } from 'react-intl'
 import { HeartFilled, HeartOutline } from '../../IconSet/Heart'
 import ProductFeatures from "../ProductFeatures/ProductFeatures";
 import StarRating from "../StarRating/StarRating";
@@ -46,8 +46,12 @@ export default function ProductCard({ details }) {
                 </div>
             </div>
         </Link>
-        <div className="absolute left-3 bottom-2 text-sm">{stock} in stock</div>
+        <div className="absolute left-3 bottom-2 text-sm">
+            <FormattedMessage id="inStock" defaultMessage="{stock} in stock" values={{ stock }} />
+        </div>
         <HeartFilled className="absolute right-2 top-2 cursor:pointer transform delay-100 hover:scale-110" />
-        <button className="absolute bottom-2 right-2 bg-sp-btn-primary text-white px-2 py-1 rounded transform delay-100 hover:sp-btn-primary-dark z-20">Add To Cart</button>
-    </div>
+            <button className="absolute bottom-2 right-2 bg-sp-btn-primary text-white px-2 py-1 rounded transform delay-100 hover:sp-btn-primary-dark z-20">
+                <FormattedMessage id="addToCart" defaultMessage="Add To Cart" />
+            </button>
+        </div>
 }

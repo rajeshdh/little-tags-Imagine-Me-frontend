@@ -64,7 +64,7 @@ export default function Product(props) {
     return <div className="mx-3 mt-10 sm:mx-10 md:mx-24">
         <div className="flex text-lg font-semibold items-center justify-between">
             <div>
-                <FormattedMessage id="searchResult" defaultMessage="Showing Results For" /> <span className="text-sp-heading-blue">{props.match.params.keyWord}</span>
+                <FormattedMessage id="searchResult" defaultMessage="Showing Results For {keyWord}" values={{keyWord: <span className="text-sp-heading-blue">{props.match.params.keyWord}</span>}} />
             </div>
             <div onClick={toggleFilterDrawer}>
                 <FilterIcon className="stroke-current cursor-pointer hover:text-sp-btn-primary" />
