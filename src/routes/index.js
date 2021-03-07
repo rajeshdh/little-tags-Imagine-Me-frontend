@@ -16,7 +16,9 @@ const Routes = () => {
 				<Route exact path="/login" isLoginRoute component={Login} />
 				<Route exact path="/register" isLoginRoute component={Register} />
 				<Route exact path="/checkout" isPrivate component={Checkout} />
-				<Route exact path="/category/:keyWord" component={ProductPage} />
+
+				
+				<Route exact path="/:type/:keyWord" component={ProductPage} />
 			</Switch>
 	);
 };

@@ -6,25 +6,39 @@ import { fetchProducts } from '../../redux/product/actions'
 
 import FilterDrawer from '../../components/FilterDrawer/FilterDrawer'
 import ProductCard from '../../components/Cards/ProductCard';
+import MainSpinner from '../../components/LoadingSpinners/MainSpinner'
+
 import FilterIcon from '../../IconSet/FilterIcons';
 import WifiOff from '../../IconSet/WifiOff'
+import EmptyIcon from '../../IconSet/EmptyIcon'
 
 
 export default function Product(props) {
     const [filterDrawerShow, setFilterDrawerShow] = useState(false)
 
-    const { products, error } = useSelector(state => ({ products: state.product.products, error: state.product.error }))
+    const { products, error, isLoading, filterCriteria } = useSelector(state => ({
+        products: state.product.products,
+        error: state.product.error,
+        isLoading: state.product.isLoading,
+        filterCriteria: state.product.filterCriteria
+    }))
 
     const dispatch = useDispatch()
 
-    const keyWord = props.match.params.keyWord
+    const requestProducts = (isFilter) => {
+        const filters = { ...filterCriteria }
+        filters.isFilter = isFilter
+        setFilterDrawerShow(false)
+        let url = process.env.REACT_APP_BASE_URL
+        const keyWord = props.match.params.keyWord
+        const type = props.match.params.type
+        url += `/${type}/${keyWord}`
+        dispatch(fetchProducts(url, filters))
+    }
+
 
     useEffect(() => {
-        let url = process.env.REACT_APP_BASE_URL
-        if (/^\/category\//.test(props.history.location.pathname)) {
-            url += `/category/${keyWord}`
-        }
-        dispatch(fetchProducts(url))
+        requestProducts(false)
     }, [])
 
     const toggleFilterDrawer = () => {
@@ -32,13 +46,14 @@ export default function Product(props) {
     }
 
     let result = null
-    if (error) {
+    if (isLoading) {
+        result = <MainSpinner />
+    } else if (error) {
         result = <div className="flex mt-10 justify-center text-lg items-center w-full"><WifiOff className="mr-2" /> <FormattedMessage id="networkError" defaultMessage="Error connecting server" /></div>
     } else if (products.length === 0) {
-        result = <div className="flex mt-10 justify-center items-center"><WifiOff /> <FormattedMessage id="noProduct" defaultMessage="No Result found" /></div>
+        result = <div className="flex mt-10 justify-center items-center"><EmptyIcon className="mr-2" /> <FormattedMessage id="noProduct" defaultMessage="No Result found" /></div>
     } else {
-        result = 
-        <div className="py-3 mt-5 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        result = <div className="py-3 mt-5 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
             {products.map((product, index) => <ProductCard
                 key={`product_id_${index}`}
                 details={product}
@@ -49,7 +64,7 @@ export default function Product(props) {
     return <div className="mx-3 mt-10 sm:mx-10 md:mx-24">
         <div className="flex text-lg font-semibold items-center justify-between">
             <div>
-                <FormattedMessage id="searchResult" defaultMessage="Showing Results For" /> <span className="text-sp-heading-blue">{keyWord}</span>
+                <FormattedMessage id="searchResult" defaultMessage="Showing Results For" /> <span className="text-sp-heading-blue">{props.match.params.keyWord}</span>
             </div>
             <div onClick={toggleFilterDrawer}>
                 <FilterIcon className="stroke-current cursor-pointer hover:text-sp-btn-primary" />
@@ -59,6 +74,7 @@ export default function Product(props) {
         <FilterDrawer
             show={filterDrawerShow}
             onClick={toggleFilterDrawer}
+            requestProducts={()=>requestProducts(true)}
         />
     </div>
 }

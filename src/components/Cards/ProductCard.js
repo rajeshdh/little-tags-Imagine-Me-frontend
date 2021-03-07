@@ -5,7 +5,7 @@ import ProductFeatures from "../ProductFeatures/ProductFeatures";
 import StarRating from "../StarRating/StarRating";
 
 export default function ProductCard({ details }) {
-    const { id, title, brand, rating, currency, originalPrice, currentPrice, offer, features, items, image } = details
+    const { id, title, brand, rating, currency, originalPrice, currentPrice, offer, features, stock, image } = details
 
 
     return <div className="relative h-96 border border-gray-200 shadow-md transform delay-200 transition-all">
@@ -46,7 +46,7 @@ export default function ProductCard({ details }) {
                 </div>
             </div>
         </Link>
-        <div className="absolute left-3 bottom-2 text-sm">{items} in stock</div>
+        <div className="absolute left-3 bottom-2 text-sm">{stock} in stock</div>
         <HeartFilled className="absolute right-2 top-2 cursor:pointer transform delay-100 hover:scale-110" />
         <button className="absolute bottom-2 right-2 bg-sp-btn-primary text-white px-2 py-1 rounded transform delay-100 hover:sp-btn-primary-dark z-20">Add To Cart</button>
     </div>

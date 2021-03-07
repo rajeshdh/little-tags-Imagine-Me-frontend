@@ -7,7 +7,7 @@ export default function RangeSlider({ defaultValue, onChange, onAfterChange, min
 
     const currencyFormatter = (value) => {
         return <FormattedNumber
-            currency="USD"
+            currency="INR"
             style="currency"
             value={value}
         />
