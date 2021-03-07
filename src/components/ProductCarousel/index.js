@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import './ProductCarousel.css';
+import './ProductCarousel.css';
 
 import Slider from "react-slick";
 
@@ -58,7 +58,7 @@ function ProductCarousel({slidesData}) {
           {slidesData && slidesData.map((slide) =>
 
             <div className="slick-slide" key={slide.id}>
-              <img className="slick-slide-image" src={`https://picsum.photos/800/800?img=${slide.id}`} />
+              <img className="slick-slide-image" src={`https://picsum.photos/600/600?img=${slide.id}`} />
             </div>
 
           )}
