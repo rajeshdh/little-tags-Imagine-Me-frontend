@@ -127,9 +127,8 @@ export default function Product(props) {
 
   useEffect(() => {
     let url = process.env.REACT_APP_BASE_URL
-    if (/^\/product\//.test(props.history.location.pathname)) {
       url += `/product/${props.match.params.productid}`
-    }
+    
 
     const fetchData = async () => {
       const response = await fetch(url)
