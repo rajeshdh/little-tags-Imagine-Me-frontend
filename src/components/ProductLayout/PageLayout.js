@@ -1,4 +1,4 @@
-import { FormattedNumber } from 'react-intl'
+import { FormattedMessage,FormattedNumber } from 'react-intl'
 
 export const ProductPageLayout = ({ children }) => {
   return (
@@ -58,5 +58,5 @@ export const LikeButton = () => {
 
 
 export const AddToCartButton = () => {
-  return (<button className="flex text-white bg-sp-btn-primary border-0 py-3 px-14 sm:px-24 font-bold hover:bg-sp-btn-primary-dark rounded">Add To Cart</button>)
+  return (<button className="flex text-white bg-sp-btn-primary border-0 py-3 px-14 sm:px-24 font-bold hover:bg-sp-btn-primary-dark rounded"> <FormattedMessage id="addToCart" defaultMessage="Add To Cart" /></button>)
 }

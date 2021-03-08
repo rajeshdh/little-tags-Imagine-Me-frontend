@@ -1,9 +1,10 @@
+import { FormattedMessage } from "react-intl";
 
 const Size = ({ sizes, onChange, selected }) => {
 
   return (<div className="flex mt-6 items-center mb-5">
     <div>
-      <span className="mr-3 font-bold text-lg">Size:</span>
+      <span className="mr-3 font-bold text-lg"><FormattedMessage id="size" />:</span>
       <div className="flex mt-1">
         {
           sizes && sizes.map((size, index) => {
