@@ -61,7 +61,7 @@ export default function Product(props) {
         </div>
     }
 
-    return <div className="mx-3 mt-10 sm:mx-10 md:mx-24">
+    return <div className="mx-3 mt-10 pb-12 sm:pb-0 sm:mx-10 md:mx-24">
         <div className="flex text-lg font-semibold items-center justify-between">
             <div>
                 <FormattedMessage id="searchResult" defaultMessage="Showing Results For {keyWord}" values={{keyWord: <span className="text-sp-heading-blue">{props.match.params.keyWord}</span>}} />
