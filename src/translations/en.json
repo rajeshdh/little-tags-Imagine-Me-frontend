@@ -24,5 +24,8 @@
     "loginWithEmail": "Or Login With Email",
     "signUpWithEmail": "Or Register With Email",
     "loginWithFacebook": "Login with Facebook",
-    "signUPWithFacebook": "Sign Up with Facebook"
+    "signUPWithFacebook": "Sign Up with Facebook",
+    "color": "Color",
+    "size": "Size",
+    "quantity": "Quantity"
 }

@@ -30,5 +30,8 @@
     "price": "रेट",
     "brands": "ब्रांड",
     "rating": "रेटिंग",
-    "apply" : "लागू"
+    "apply" : "लागू",
+    "color": "रंग",
+    "size": "माप",
+    "quantity": "मात्रा"
 }

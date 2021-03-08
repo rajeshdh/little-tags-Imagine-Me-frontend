@@ -1,8 +1,10 @@
+import { FormattedMessage } from "react-intl";
+
 function Quantity({ selected, increaseQuantity, decreseQuantity, onChange }) {
   return (
     <div className="flex mt-6 items-center mb-5">
       <div>
-        <span className="mr-3 font-bold text-lg">Quantity:</span>
+        <span className="mr-3 font-bold text-lg"><FormattedMessage id="quantity" />:</span>
         <div className="flex mt-1">
 
           <button
