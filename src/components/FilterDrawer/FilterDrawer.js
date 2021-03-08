@@ -33,7 +33,7 @@ export default function FilterDrawer({ show, onClick, requestProducts }) {
 
 
     return <BackDrop show={show} onClick={onClick}>
-        <div className={`absolute bg-white inset-y-0 right-0 max-w-xs w-full transition-transform duration-400 transform ${show ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div test-id="filter-button" className={`absolute bg-white inset-y-0 right-0 max-w-xs w-full transition-transform duration-400 transform ${show ? 'translate-x-0' : 'translate-x-full'}`}>
             <div className="relative h-full pb-5 overflow-y-auto">
                 <div className="float-right mr-2 text-4xl cursor-pointer" onClick={onClick} >&times;</div>
                 <div className="mt-10 px-4">
