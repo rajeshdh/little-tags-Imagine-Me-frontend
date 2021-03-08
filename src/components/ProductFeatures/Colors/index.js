@@ -3,13 +3,12 @@ const Colors = ({ colors, onChange, selected }) => {
   return (<div className="flex mt-6 items-center mb-5">
     <div>
       <span className="mr-3 font-bold text-lg">Color:</span>
-      {/* <span className="mr-3 font-medium text-lg">Selected Color</span> */}
       <div className="flex mt-1">
         {
           colors && colors.map((color, index) => {
             return <button
               key={index}
-              className="border-2 border-gray-300 rounded-full w-12 h-12"
+              className="border-2 border-gray-300 rounded-full w-12 h-12 mr-1"
               style={{ backgroundColor: color, border: selected === color ? "5px solid gold" : "0px" }}
               onClick={() => onChange(color)}
             ></button>
