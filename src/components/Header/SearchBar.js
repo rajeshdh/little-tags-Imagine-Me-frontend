@@ -31,7 +31,7 @@ function SearchButton({ handleClick }) {
 
 function CloseButton({ handleClick }) {
   return (
-    <button type="button" className="font-bold py-2 px-4 rounded items-center justify-center" onClick={handleClick}>
+    <button type="button" className="absolute right-8 top-3 font-bold py-2 px-4 rounded items-center justify-center focus:outline-none" onClick={handleClick}>
       <svg className="fill-current w-4 h-4 mr-2" width="22" height="22" viewBox="0 0 22 22">
         <path fillRule="evenodd" clipRule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z" />
       </svg>
@@ -42,7 +42,6 @@ function AutoComplete({children, isSearchOpen}){
   const history = useHistory();
   return <Downshift
   onChange={selection =>{
-    // alert(selection ? `You selected ${selection.value}` : 'Selection Cleared')
     let path = `/search?q=${selection.value}`; 
     history.push(path)
   }}
@@ -60,9 +59,9 @@ function AutoComplete({children, isSearchOpen}){
     getRootProps,
   }) => (
     <div {...getRootProps({}, { suppressRefError: true })}>
-      <div className={`${isSearchOpen ? "inline-block" : "hidden"} `}>
+      <div className={`rounded-full border border-bg-gray-50 ${isSearchOpen ? "block" : "hidden"} `}>
         <SearchInput {...getInputProps()} />
-        <aside className="absolute z-50 flex flex-col items-start w-96 bg-white border rounded-md shadow-xl animate-bottom-top"
+        <aside className={`absolute z-50 ${isSearchOpen ? "" : "hidden"} flex flex-col items-start inset-x-5 sm:inset-x-7 md:inset-x-0 bg-white rounded-md shadow-xl animate-bottom-top`}
           role="menu" aria-labelledby="menu-heading" >
           <ul {...getMenuProps()} className="flex flex-col w-full">
             {isOpen
