@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import ProductCarousel from "../../components/ProductCarousel"
-import Ratings from "../../components/ProductFeatures/Ratings"
-import Colors from "../../components/ProductFeatures/Colors"
-import Quantity from "../../components/ProductFeatures/Quantity"
-import Size from "../../components/ProductFeatures/Size"
+import React, { useState, useEffect } from 'react';
+import ProductCarousel from '../../components/ProductCarousel';
+import Ratings from '../../components/ProductFeatures/Ratings';
+import Colors from '../../components/ProductFeatures/Colors';
+import Quantity from '../../components/ProductFeatures/Quantity';
+import Size from '../../components/ProductFeatures/Size';
 import {
-  ProductPageLayout, ProductSection, ProductHeader, Price,
-  ProductDescription, AddToCartButton, LikeButton
-} from "../../components/ProductLayout/PageLayout"
-
+  ProductPageLayout,
+  ProductSection,
+  ProductHeader,
+  Price,
+  ProductDescription,
+  AddToCartButton,
+  LikeButton,
+} from '../../components/ProductLayout/PageLayout';
 
 // const productData = {
 //   "id": "product_id_1",
@@ -66,10 +70,8 @@ import {
 
 function ProductPage({ productData }) {
   const [selectedColor, setSelectedColor] = useState(productData.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(productData.sizes[0])
+  const [selectedSize, setSelectedSize] = useState(productData.sizes[0]);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
-
-
 
   function SetQuantity(value) {
     value = value || 0;
@@ -77,11 +79,11 @@ function ProductPage({ productData }) {
   }
 
   function increaseQuantity() {
-    setSelectedQuantity(prevState => Number(prevState) + 1);
+    setSelectedQuantity((prevState) => Number(prevState) + 1);
   }
 
   function decreseQuantity() {
-    setSelectedQuantity(prevState => Number(prevState) - 1);
+    setSelectedQuantity((prevState) => Number(prevState) - 1);
   }
   return (
     <ProductPageLayout>
@@ -89,56 +91,69 @@ function ProductPage({ productData }) {
         <ProductCarousel slidesData={productData.gallery} />
       </ProductSection>
 
-      <ProductSection sectionClasses="sm:m-auto" >
-        <ProductHeader brandName={productData.brand} title={productData.title} />
+      <ProductSection sectionClasses="sm:m-auto">
+        <ProductHeader
+          brandName={productData.brand}
+          title={productData.title}
+        />
         <div className="flex mb-4">
           <span className="flex items-center">
             <Ratings ratings={productData.ratings} />
 
-            <span className="text-gray-600 ml-3">{productData.noOfReviews} Reviews</span>
+            <span className="text-gray-600 ml-3">
+              {productData.noOfReviews} Reviews
+            </span>
           </span>
-
         </div>
-        <Price price={productData.currentPrice} currency={productData.currency} />
+        <Price
+          price={productData.currentPrice}
+          currency={productData.currency}
+        />
         <ProductDescription description={productData.description} />
         <Colors
           colors={productData.colors}
           selected={selectedColor}
-          onChange={setSelectedColor} />
+          onChange={setSelectedColor}
+        />
         <Size
           selected={selectedSize}
           sizes={productData.sizes}
-          onChange={setSelectedSize} />
-        <Quantity selected={selectedQuantity} increaseQuantity={increaseQuantity} decreseQuantity={decreseQuantity} onChange={SetQuantity} />
+          onChange={setSelectedSize}
+        />
+        <Quantity
+          selected={selectedQuantity}
+          increaseQuantity={increaseQuantity}
+          decreseQuantity={decreseQuantity}
+          onChange={SetQuantity}
+        />
         <div className="flex">
           <AddToCartButton />
 
           <LikeButton />
         </div>
       </ProductSection>
-
     </ProductPageLayout>
-  )
+  );
 }
-
 
 export default function Product(props) {
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
-    let url = process.env.REACT_APP_BASE_URL
-      url += `/product/${props.match.params.productid}`
-    
+    let url = process.env.REACT_APP_BASE_URL;
+    url += `/product/${props.match.params.productid}`;
 
     const fetchData = async () => {
-      const response = await fetch(url)
-      const result = await response.json()
-      setProductData(result)
-    }
+      const response = await fetch(url);
+      const result = await response.json();
+      setProductData(result);
+    };
 
-    fetchData()
+    fetchData();
   }, []);
 
-  return (productData && productData.length && <ProductPage productData={productData[0]} />)
+  return (
+    productData &&
+    productData.length && <ProductPage productData={productData[0]} />
+  );
 }
-

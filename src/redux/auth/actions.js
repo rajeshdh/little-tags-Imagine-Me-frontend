@@ -3,16 +3,16 @@ import {
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_FAIL,
-} from "./actionTypes";
+} from './actionTypes';
 
-import { auth } from "../../Utils/firebase"
+import { auth } from '../../Utils/firebase';
 
-//CHECK TOKEN AND LOAD USER
+// CHECK TOKEN AND LOAD USER
 const register = ({ email, password }) => (dispatch) => {
   auth
     .createUserWithEmailAndPassword(email, password)
     .then((res) => {
-      alert("Registered Succesfully");
+      alert('Registered Succesfully');
       dispatch(login({ email, password }));
     })
     .catch((err) => {
@@ -38,24 +38,22 @@ const login = ({ email, password }) => (dispatch) => {
     });
 };
 
-const logoutUser = () => {
-  return {
-    type: LOGOUT_SUCCESS,
-  };
-};
+const logoutUser = () => ({
+  type: LOGOUT_SUCCESS,
+});
 
 export const tokenConfig = (getState) => {
-  //GEt token from localstorage
-  const token = getState().auth.token;
+  // GEt token from localstorage
+  const { token } = getState().auth;
 
   const config = {
     headers: {
-      "Content-type": "application/json",
+      'Content-type': 'application/json',
     },
   };
 
   if (token) {
-    config.headers["auth-token"] = token;
+    config.headers['auth-token'] = token;
   }
 
   return config;

@@ -1,35 +1,39 @@
 import React, { useState } from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import { changeLocale } from '../../redux/actions';
 
-import { En, Hi, Open, Close } from '../../IconSet'
+import { En, Hi, Open, Close } from '../../IconSet';
 
 const languageOptions = [
   {
     id: 1,
     value: 'en',
     text: 'English',
-    html: <En />
+    html: <En />,
   },
   {
     id: 2,
     value: 'hi',
     text: 'हिन्दी',
-    html: <Hi />
+    html: <Hi />,
   },
 ];
 
-function LanguageDropdown({ locale, changeLocale}) {
-  const selectedLanguage = languageOptions.find((item) => item.value === locale);
+function LanguageDropdown({ locale, changeLocale }) {
+  const selectedLanguage = languageOptions.find(
+    (item) => item.value === locale,
+  );
 
   const [open, setOpen] = useState(false);
-  const [selection, setSelection] = useState(selectedLanguage || languageOptions[0]);
+  const [selection, setSelection] = useState(
+    selectedLanguage || languageOptions[0],
+  );
   const toggle = () => setOpen(!open);
 
   function handleOnClick(item) {
-    changeLocale({value: item.value});
+    changeLocale({ value: item.value });
     setSelection(item);
-    toggle(!open)
+    toggle(!open);
   }
 
   return (
@@ -44,29 +48,39 @@ function LanguageDropdown({ locale, changeLocale}) {
         <span className="inline-block">{selection.text}</span>
 
         <p>{open ? <Close /> : <Open />}</p>
-
       </button>
       {open && (
         <ul className="border block bg-white rounded-sm absolute px-1 z-50">
-          {languageOptions.map(item => (
-           item.value !== selection.value && <li className="rounded-sm px-1 py-1 hover:bg-gray-100 flex items-center text-xs md:text-base" key={item.id}>
-              <button className="flex items-center uppercase" type="button" onClick={() => handleOnClick(item)}>
-                {item.html} <span className="inline-block m-1">{item.text}</span>
-              </button>
-            </li>
-          ))}
+          {languageOptions.map(
+            (item) =>
+              item.value !== selection.value && (
+                <li
+                  className="rounded-sm px-1 py-1 hover:bg-gray-100 flex items-center text-xs md:text-base"
+                  key={item.id}
+                >
+                  <button
+                    className="flex items-center uppercase"
+                    type="button"
+                    onClick={() => handleOnClick(item)}
+                  >
+                    {item.html}{' '}
+                    <span className="inline-block m-1">{item.text}</span>
+                  </button>
+                </li>
+              ),
+          )}
         </ul>
       )}
     </div>
   );
 }
 
-const mapStateToProps = state => {
-  const { locale } = state
-  return { locale }
-}
-const mapDispatchToProps = dispatch => ({
-  changeLocale: (payload) => dispatch(changeLocale(payload))
+const mapStateToProps = (state) => {
+  const { locale } = state;
+  return { locale };
+};
+const mapDispatchToProps = (dispatch) => ({
+  changeLocale: (payload) => dispatch(changeLocale(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LanguageDropdown);

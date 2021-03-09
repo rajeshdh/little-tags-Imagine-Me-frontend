@@ -7,7 +7,7 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCESS,
   REGISTER_FAIL,
-} from "./actionTypes";
+} from './actionTypes';
 
 const initialState = {
   isAuthenticated: null,
@@ -30,7 +30,7 @@ const authReducer = (state = initialState, action) => {
         user: action.payload,
       };
     case LOGIN_SUCCESS:
-      localStorage.setItem("isAuthenticated", true);
+      localStorage.setItem('isAuthenticated', true);
       return {
         ...state,
         ...action.payload,
@@ -47,7 +47,7 @@ const authReducer = (state = initialState, action) => {
     case LOGIN_FAIL:
     case LOGOUT_SUCCESS:
     case REGISTER_FAIL:
-      localStorage.setItem("isAuthenticated", false);
+      localStorage.setItem('isAuthenticated', false);
       return {
         ...state,
         token: null,
