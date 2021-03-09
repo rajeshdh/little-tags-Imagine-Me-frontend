@@ -15,7 +15,7 @@ function Header() {
 
   return (<header>
     <div className="relative">
-      <nav className="flex flex-wrap mx-3 items-center justify-center sm:justify-between bg-sp-white md:mx-24 sm:mx-10 border-b sm:border-grey-400 sm:border-0">
+      <nav className="flex flex-wrap mx-3 items-center justify-center sm:justify-between sm:py-3 bg-sp-white sm:mx-10 border-b sm:border-grey-400 sm:border-0 md:mx-24">
         <div className="flex items-center  ">
           <Logo />
           <div className="hidden sm:block">
@@ -29,23 +29,23 @@ function Header() {
         </div>
         <div className="hidden sm:block">
           <div className="inline-flex items-center">
-            <Link to="/cart">
+            <NavLink to="/cart">
             <NavButton>
               <CartIcon />
               <span className="hidden md:inline-block">
                 <FormattedMessage id="cart" />
               </span>
             </NavButton>
-            </Link>
+            </NavLink>
             <LanguageDropdown />
-            <Link to="/login">
+            <NavLink to="/login">
             <NavButton>
               <LoginIcon />
               <span className="hidden md:inline-block">
                 <FormattedMessage id="login" />
               </span>
             </NavButton>
-            </Link>
+            </NavLink>
           </div>
         </div>
         <div className="absolute right-3 top-1 sm:hidden">
