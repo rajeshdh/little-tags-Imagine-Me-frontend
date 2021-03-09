@@ -1,5 +1,5 @@
-import authActions from "../../redux/auth/actions";
-import LoginTemplate from "../../components/Auth/LoginTemplate";
+import authActions from '../../redux/auth/actions';
+import LoginTemplate from '../../components/Auth/LoginTemplate';
 
 export default function Login() {
   return (
@@ -10,7 +10,7 @@ export default function Login() {
       submitText="login"
       linksTo="/register"
       linkText="signUpInstead"
-      showForgotPassword={true}
+      showForgotPassword
       authAction={authActions.login}
     />
   );

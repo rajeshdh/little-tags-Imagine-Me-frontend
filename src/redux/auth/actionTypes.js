@@ -1,4 +1,4 @@
-const NS = "@shopay/auth";
+const NS = '@shopay/auth';
 
 export const USER_LOADING = `${NS}/USER_LOADING`;
 export const USER_LOADED = `${NS}/USER_LOADED`;

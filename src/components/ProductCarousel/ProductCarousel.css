@@ -1,6 +1,4 @@
-
 .slider-wrapper {
-
   position: relative;
   margin: auto;
 }
@@ -18,7 +16,6 @@
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-
 }
 .slick-slide-label {
   color: #fff;
@@ -35,16 +32,15 @@
 }
 
 .thumbnail-slider-wrap {
-    position: relative;
-   
-    height: 50px;
-  }
-  .thumbnail-slider-wrap .slick-track .slick-slide {
-    text-align: center;
-  }
-  .thumbnail-slider-wrap .slick-track .slick-slide img {
+  position: relative;
 
-    border-radius: 50px;
-  
-    padding: 5px;
-  }
+  height: 50px;
+}
+.thumbnail-slider-wrap .slick-track .slick-slide {
+  text-align: center;
+}
+.thumbnail-slider-wrap .slick-track .slick-slide img {
+  border-radius: 50px;
+
+  padding: 5px;
+}
