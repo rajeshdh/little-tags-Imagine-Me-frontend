@@ -3,16 +3,16 @@ import SearchBar from "./SearchBar";
 import NavButton from "./NavButton";
 import NavLink from "./NavLink";
 import Logo from "./Logo";
+import { useSelector } from 'react-redux'
 
 import { CartIcon, LoginIcon } from "../../IconSet";
 import BottomNavigation from "./BottomNavigation";
 import { FormattedMessage } from "react-intl";
-import {
-  Link
-} from "react-router-dom";
+
 
 function Header() {
 
+  const { user, isLoading } = useSelector(state => ({ user: state.auth.user, isLoading: state.auth.isLoading }))
   return (<header>
     <div className="relative">
       <nav className="flex flex-wrap mx-3 items-center justify-center sm:justify-between sm:py-3 bg-sp-white sm:mx-10 border-b sm:border-grey-400 sm:border-0 md:mx-24">
@@ -27,21 +27,21 @@ function Header() {
         <div className="hidden sm:block">
           <div className="inline-flex items-center">
             <NavLink to="/cart">
-            <NavButton>
-              <CartIcon />
-              <span className="hidden md:inline-block">
-                <FormattedMessage id="cart" />
-              </span>
-            </NavButton>
+              <NavButton>
+                <CartIcon />
+                <span className="hidden md:inline-block">
+                  <FormattedMessage id="cart" />
+                </span>
+              </NavButton>
             </NavLink>
             <LanguageDropdown />
-            <NavLink to="/login">
-            <NavButton>
-              <LoginIcon />
-              <span className="hidden md:inline-block">
-                <FormattedMessage id="login" />
-              </span>
-            </NavButton>
+            <NavLink className={isLoading ? 'animate-pulse':''} to="/login">
+              <NavButton>
+                <LoginIcon />
+                {isLoading ? <div className="w-24 h-5 bg-gray-400"></div>: <span className="hidden truncate overflow-ellipse max-w-min md:inline-block" title={user?.email ? user.email : ''}>
+                  {user?.email ? user.email : <FormattedMessage id="login" />}
+                </span>}
+              </NavButton>
             </NavLink>
           </div>
         </div>

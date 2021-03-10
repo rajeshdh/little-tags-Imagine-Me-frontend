@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl'
 import Textbox from './../Textbox'
-import { EmailIcon, PasswordIcon, ArrowRound, SignUpIcon } from "../../IconSet"
- 
+import { EmailIcon, PasswordIcon, ArrowRound, SignUpIcon, SpinIcon } from "../../IconSet"
+
 export default function LoginTemplate({ pageHeader,
   facebookButtonText, emailLoginHeader,
   submitText, linksTo,
@@ -15,6 +15,8 @@ export default function LoginTemplate({ pageHeader,
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const isLoading = useSelector(state => state.auth.isLoading)
 
   const dispatch = useDispatch();
   const onSubmit = (e) => {
@@ -51,7 +53,7 @@ export default function LoginTemplate({ pageHeader,
               </label>
               <div className="relative">
                 <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                <EmailIcon />
+                  <EmailIcon />
                 </div>
                 <Textbox name="email"
                   type="email"
@@ -70,7 +72,7 @@ export default function LoginTemplate({ pageHeader,
               <div className="relative">
                 <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                   <span>
-                   <PasswordIcon />
+                    <PasswordIcon />
                   </span>
                 </div>
                 <Textbox name="password"
@@ -94,12 +96,14 @@ export default function LoginTemplate({ pageHeader,
             }
 
             <div className="flex w-full">
-              <button type="submit" className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-sp-btn-primary hover:bg-sp-btn-primary-dark rounded py-2 w-full transition duration-150 ease-in">
+              <button type="submit"
+                disabled={isLoading}
+                className="flex disabled:opacity-50 disabled:cursor-wait items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-sp-btn-primary hover:bg-sp-btn-primary-dark rounded py-2 w-full transition duration-150 ease-in">
+                {isLoading ? <SpinIcon className="mr-2 animate-spin" /> : null}
                 <span className="mr-2 uppercase">
-                  <FormattedMessage id={submitText} /></span>
-                <span>
-                <ArrowRound />
+                  <FormattedMessage id={submitText} />
                 </span>
+                <ArrowRound />
               </button>
             </div>
           </form>

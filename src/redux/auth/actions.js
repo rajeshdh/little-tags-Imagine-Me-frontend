@@ -3,16 +3,17 @@ import {
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_FAIL,
+  USER_LOADING,
 } from "./actionTypes";
 
 import { auth } from "../../Utils/firebase"
 
 //CHECK TOKEN AND LOAD USER
 const register = ({ email, password }) => (dispatch) => {
+  dispatch({ type: USER_LOADING })
   auth
     .createUserWithEmailAndPassword(email, password)
     .then((res) => {
-      alert("Registered Succesfully");
       dispatch(login({ email, password }));
     })
     .catch((err) => {
@@ -23,12 +24,17 @@ const register = ({ email, password }) => (dispatch) => {
 };
 
 const login = ({ email, password }) => (dispatch) => {
+  dispatch({ type: USER_LOADING })
   auth
     .signInWithEmailAndPassword(email, password)
     .then((res) => {
+      const user = {
+        email: res.user.email,
+        uid: res.user.uid
+      }
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: res.email,
+        payload: user,
       });
     })
     .catch((err) => {
@@ -44,8 +50,30 @@ const logoutUser = () => {
   };
 };
 
+
+export const checkUserAlreadySignedIn = () => (dispatch) => {
+  dispatch({ type: USER_LOADING })
+  auth.onAuthStateChanged(function (userData) {
+    if (userData) {
+      // User is signed in.
+      const user = {
+        email: userData.email,
+        uid: userData.uid
+      }
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: user,
+      });
+    } else {
+      // No user is signed in.
+      dispatch({
+        type: LOGIN_FAIL,
+      });
+    }
+  });
+}
+
 export const tokenConfig = (getState) => {
-  //GEt token from localstorage
   const token = getState().auth.token;
 
   const config = {
@@ -65,6 +93,7 @@ const authActions = {
   register,
   login,
   logoutUser,
+  checkUserAlreadySignedIn
 };
 
 export default authActions;
