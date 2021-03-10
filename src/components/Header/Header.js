@@ -19,9 +19,6 @@ function Header() {
         <div className="flex items-center  ">
           <Logo />
           <div className="hidden sm:block">
-            <NavLink to="/expore">
-              <FormattedMessage id="explore" />
-            </NavLink>
             <NavLink to="/trending">
               <FormattedMessage id="trending" />
             </NavLink>
