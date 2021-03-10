@@ -10,17 +10,17 @@ body>div {
     height: 100%;
 }
 
-.slick-track {
+.HomePage .slick-track {
     display: flex !important;
 }
 
-.slick-slide {
+.HomePage .slick-slide {
     height: inherit !important;
 }
-.slick-list{
+.HomePage .slick-list{
     display: flex;
     height: 100%;
 }
-.slick-list .slick-slide>div{
+.HomePage .slick-list .slick-slide>div{
     height: 100%;
 }

@@ -7,12 +7,9 @@ function Ratings({ ratings }) {
   return numberOfStarsArray.map((_, index) => {
     const starRating = index + 1;
     const isStarred = starRating <= ratings
-    const isPartiallyFullStar = starRating > ratings && starRating - 1 < ratings
-
     return <RatingStar
       key={starRating}
       isStarred={isStarred}
-      isPartiallyFullStar={isPartiallyFullStar}
     />
   })
 }
