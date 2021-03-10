@@ -24,19 +24,11 @@ const translation = {
 function App({ locale }) {
   return (
     <IntlProvider locale={locale} messages={translation[locale]}>
-      {/* HEADER COMPONENT HERE */}
       <Header></Header>
-
-      {/* MAIN CONTENTS HERE */}
       <Suspense fallback={<MainSpinner />}>
           <Routes />
       </Suspense>
 
-
-      {/* FOOTER HERE */}
-      {/* <footer>
-        footer
-      </footer> */}
     </IntlProvider>
   );
 }

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useDispatch, useSelector } from 'react-redux'
+import SearchBar from '../../components/Header/SearchBar'
 import {
     useLocation
-  } from "react-router-dom";
+} from "react-router-dom";
 
 import { fetchProducts } from '../../redux/product/actions'
 
@@ -21,7 +22,7 @@ import EmptyIcon from '../../IconSet/EmptyIcon'
 // the query string for you.
 function useQuery() {
     return new URLSearchParams(useLocation().search);
-  }
+}
 
 export default function Search(props) {
 
@@ -74,20 +75,24 @@ export default function Search(props) {
         </div>
     }
 
-    return <div className="mx-3 mt-10 sm:mx-10 md:mx-24">
-        <div className="flex text-lg font-semibold items-center justify-between">
-            <div>
-                <FormattedMessage id="searchResult" defaultMessage="Showing Results For {keyWord}" values={{keyWord: <span className="text-sp-heading-blue">{keyWord}</span>}} />
+    return <>
+
+        <SearchBar className="md:hidden w-11/12 m-auto my-2" />
+        <div className="mx-3 sm:mx-10 md:mx-24">
+            <div className="flex text-lg font-semibold items-center justify-between">
+                <div>
+                    <FormattedMessage id="searchResult" defaultMessage="Showing Results For {keyWord}" values={{ keyWord: <span className="text-sp-heading-blue">{keyWord}</span> }} />
+                </div>
+                <div onClick={toggleFilterDrawer}>
+                    <FilterIcon className="stroke-current cursor-pointer hover:text-sp-btn-primary" />
+                </div>
             </div>
-            <div onClick={toggleFilterDrawer}>
-                <FilterIcon className="stroke-current cursor-pointer hover:text-sp-btn-primary" />
-            </div>
+            {result}
+            <FilterDrawer
+                show={filterDrawerShow}
+                onClick={toggleFilterDrawer}
+                requestProducts={() => requestProducts(true)}
+            />
         </div>
-        {result}
-        <FilterDrawer
-            show={filterDrawerShow}
-            onClick={toggleFilterDrawer}
-            requestProducts={()=>requestProducts(true)}
-        />
-    </div>
+    </>
 }

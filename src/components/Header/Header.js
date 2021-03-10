@@ -19,9 +19,6 @@ function Header() {
         <div className="flex items-center  ">
           <Logo />
           <div className="hidden sm:block">
-            <NavLink to="/expore">
-              <FormattedMessage id="explore" />
-            </NavLink>
             <NavLink to="/trending">
               <FormattedMessage id="trending" />
             </NavLink>
@@ -52,7 +49,6 @@ function Header() {
           <LanguageDropdown />
         </div>
       </nav>
-      <SearchBar className="md:hidden w-11/12 m-auto mt-2" />
       <SearchBar className="hidden absolute right-0 bottom-0 top-0 md:block" />
 
     </div>
