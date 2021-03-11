@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Route, Redirect, useHistory, useLocation } from "react-router-dom";
+import { Route, Redirect, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useQuery from "../hooks/useQuery";
+import MainSpinner from "../components/LoadingSpinners/MainSpinner";
 
 function RouteWrapper({
 	component: Component,
@@ -15,7 +16,13 @@ function RouteWrapper({
 	const location = useLocation()
 	const query = useQuery(location)
 	const redirectURL = query.get('redirect') ?? "/"
-	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+	const { isAuthenticated, isLoading } = useSelector((state) => ({ isAuthenticated: state.auth.isAuthenticated, isLoading: state.auth.isLoading }));
+	
+
+	if(isPrivate && isLoading){
+		return <MainSpinner />
+	}
+
 	/**
 	 * Redirect user to SignIn page if he tries to access a private route
 	 * without authentication.
