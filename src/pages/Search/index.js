@@ -6,6 +6,8 @@ import {
     useLocation
 } from "react-router-dom";
 
+import useQuery from '../../hooks/useQuery'
+
 import { fetchProducts } from '../../redux/product/actions'
 
 import FilterDrawer from '../../components/FilterDrawer/FilterDrawer'
@@ -20,13 +22,10 @@ import EmptyIcon from '../../IconSet/EmptyIcon'
 
 // A custom hook that builds on useLocation to parse
 // the query string for you.
-function useQuery() {
-    return new URLSearchParams(useLocation().search);
-}
 
 export default function Search(props) {
 
-    let query = useQuery();
+    let query = useQuery(useLocation(), "search");
     const keyWord = query.get("q");
 
     const [filterDrawerShow, setFilterDrawerShow] = useState(false)

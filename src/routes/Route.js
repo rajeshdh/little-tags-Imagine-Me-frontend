@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, useHistory, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import useQuery from "../hooks/useQuery";
 
 function RouteWrapper({
 	component: Component,
@@ -9,6 +10,11 @@ function RouteWrapper({
 	isLoginRoute,
 	...rest
 }) {
+
+
+	const location = useLocation()
+	const query = useQuery(location)
+	const redirectURL = query.get('redirect') ?? "/"
 	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 	/**
 	 * Redirect user to SignIn page if he tries to access a private route
@@ -16,7 +22,7 @@ function RouteWrapper({
 	 */
 
 	if (isPrivate && !isAuthenticated) {
-		return <Redirect to="/login" />;
+		return <Redirect to={`/login?redirect=${location.pathname}`} />;
 	}
 
 	/**
@@ -25,7 +31,7 @@ function RouteWrapper({
 	 */
 
 	if (isLoginRoute && isAuthenticated) {
-		return <Redirect to="/" />;
+		return <Redirect to={redirectURL} />;
 	}
 
 	/**
