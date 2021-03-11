@@ -30,7 +30,7 @@ function Header() {
               <div className="absolute -top-1 left-2.5 w-5 h-5 flex justify-center items-center text-white text-xs bg-sp-btn-primary rounded-full">{cartLength}</div>
               <NavButton>
                 <CartIcon />
-                <span className="hidden md:inline-block">
+                <span className="hidden ml-2 md:inline-block">
                   <FormattedMessage id="cart" />
                 </span>
               </NavButton>

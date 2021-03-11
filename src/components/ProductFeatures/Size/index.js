@@ -12,7 +12,7 @@ const Size = ({ sizes, onChange, selected }) => {
             return <button
               key={index}
               className={`flex ml-1 text-white font-bold  
-           border-0 py-2 px-6 rounded ${classNames}`}
+                border-0 py-2 px-6 rounded focus:outline-none ${classNames}`}
               onClick={() => onChange(size)}
             >
               {size}

@@ -17,11 +17,13 @@ import EmptyIcon from '../../IconSet/EmptyIcon'
 export default function Product(props) {
     const [filterDrawerShow, setFilterDrawerShow] = useState(false)
 
-    const { products, error, isLoading, filterCriteria } = useSelector(state => ({
+    const { products, error, isLoading, filterCriteria, cart, wishList } = useSelector(state => ({
         products: state.product.products,
         error: state.product.error,
         isLoading: state.product.isLoading,
-        filterCriteria: state.product.filterCriteria
+        filterCriteria: state.product.filterCriteria,
+        cart: state.user.cart,
+        wishList: state.user.wishList,
     }))
 
     const dispatch = useDispatch()
@@ -58,12 +60,14 @@ export default function Product(props) {
             {products.map((product, index) => <ProductCard
                 key={`product_id_${index}`}
                 details={product}
+                isWishList={wishList.includes(product.id)}
+                isAddedToCart={cart.includes(product.id)}
             />)}
         </div>
     }
 
     return <>
-    
+
         <SearchBar className="md:hidden w-11/12 m-auto my-2" />
         <div className="mx-3 pb-12 sm:pb-0 sm:mx-10 md:mx-24">
             <div className="flex text-lg font-semibold items-center justify-between">

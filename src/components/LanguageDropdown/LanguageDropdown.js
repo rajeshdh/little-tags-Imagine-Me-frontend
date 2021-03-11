@@ -35,13 +35,13 @@ function LanguageDropdown({ locale, changeLocale}) {
   return (
     <div className="inline-block relative sm:ml-6">
       <button
-        className="outline-none focus:outline-none sm:w-32 border px-1 py-1 uppercase bg-white rounded-sm flex items-center min-w-80 text-xs md:text-base"
+        className="outline-none block focus:outline-none sm:w-32 border px-1 py-1 uppercase bg-white rounded-sm flex items-center min-w-80 text-xs md:text-base"
         onKeyPress={() => toggle(!open)}
         onClick={() => toggle(!open)}
       >
         {selection.html}
 
-        <span className="inline-block">{selection.text}</span>
+        <span className="ml-2 inline-block">{selection.text}</span>
 
         <p className="sm:absolute sm:right-2">{open ? <Close /> : <Open />}</p>
 
@@ -50,8 +50,8 @@ function LanguageDropdown({ locale, changeLocale}) {
         <ul className="border block bg-white rounded-sm inset-x-0 absolute px-1 z-50">
           {languageOptions.map(item => (
            item.value !== selection.value && <li className="rounded-sm px-1 py-1 hover:bg-gray-100 flex items-center text-xs md:text-base" key={item.id}>
-              <button className="flex items-center uppercase" type="button" onClick={() => handleOnClick(item)}>
-                {item.html} <span className="inline-block m-1">{item.text}</span>
+              <button className="flex w-full items-center uppercase focus:outline-none" type="button" onClick={() => handleOnClick(item)}>
+                {item.html} <span className="inline-block m-1 ml-2">{item.text}</span>
               </button>
             </li>
           ))}

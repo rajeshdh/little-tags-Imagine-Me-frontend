@@ -9,7 +9,7 @@ const Colors = ({ colors, onChange, selected }) => {
           colors && colors.map((color, index) => {
             return <button
               key={index}
-              className="border-2 border-gray-300 rounded-full w-12 h-12 mr-1"
+              className="border-2 border-gray-300 rounded-full w-12 h-12 mr-1 focus:outline-none"
               style={{ backgroundColor: color, border: selected === color ? "5px solid gold" : "0px" }}
               onClick={() => onChange(color)}
             ></button>
