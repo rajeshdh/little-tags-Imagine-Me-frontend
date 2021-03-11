@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Route, Redirect } from "react-router-dom";
-import { connect, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 function RouteWrapper({
 	component: Component,
@@ -44,9 +44,4 @@ RouteWrapper.defaultProps = {
 	isPrivate: false,
 };
 
-const mapStateToProps = state => {
-  const { auth } = state
-  return { auth }
-}
-
-export default connect(mapStateToProps)(RouteWrapper);
+export default RouteWrapper;
