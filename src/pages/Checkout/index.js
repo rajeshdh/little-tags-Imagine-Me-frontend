@@ -4,8 +4,8 @@ import { FormattedMessage } from "react-intl";
 
 function Address() {
   return (
-    <div className="md:w-1/3 flex pb-6">
-      <div className="flex-grow">
+    <div className="md:w-1/2 flex pr-2  mt-2 hover:border-2 border-blue-500 ">
+      <div className="flex-grow select-none p-1 cursor-pointer rounded-md transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
         <h2 className="text-gray-900 text-lg title-font font-medium mb-2">
           Shooting Stars
         </h2>
