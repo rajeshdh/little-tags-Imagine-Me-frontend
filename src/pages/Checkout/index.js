@@ -20,6 +20,8 @@ function Address() {
   );
 }
 
+
+
 function Checkout() {
   const [showAddressForm, setShowAddressForm] = React.useState(false);
 
@@ -60,9 +62,10 @@ function Checkout() {
                     <Address />
                     <Address />
                   </div>
-                  <div className="mt-6">
+                  <div className="flex justify-end mt-6">
                     <button
-                      className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                      className="flex ml-1 text-white font-bold  
+           border-0 py-2 px-6 rounded bg-sp-btn-selected hover:bg-sp-btn-selected-dark"
                       type="button"
                       style={{ transition: "all .15s ease" }}
                       onClick={() => setShowAddressForm(true)}
