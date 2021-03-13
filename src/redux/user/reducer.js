@@ -1,8 +1,8 @@
-import { ADD_TO_CART, ADD_TO_ORDER, ADD_TO_WISHLIST, MOVE_TO_WISHLIST, REMOVE_FROM_CART } from "./actionTypes";
+import { ADD_TO_CART, ADD_TO_ORDER, ADD_TO_WISHLIST, MOVE_TO_WISHLIST, REMOVE_FROM_CART, REMOVE_FROM_WISHLIST } from "./actionTypes";
 
 const initialState = {
     cart: ['product_id_1', 'product_id_4', 'product_id_2', 'product_id_5'],
-    wishList: ['product_id_3'],
+    wishList: ['product_id_3','product_id_2','product_id_5'],
     addresses: [],
     orderHistory: [],
     order: []
@@ -45,6 +45,14 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 wishList: wishLists
+            }
+        case REMOVE_FROM_WISHLIST:
+            const tempWishList = [...state.wishList]
+            const removeIndex = tempWishList.indexOf(action.payload)
+            tempWishList.splice(removeIndex, 1)
+            return {
+                ...state,
+                wishList: tempWishList
             }
 
         default: return state;

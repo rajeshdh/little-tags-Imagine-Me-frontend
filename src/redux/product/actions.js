@@ -13,7 +13,6 @@ export const fetchProducts = (url, data) => async (dispatch) => {
 
         const result = await response.json()
         dispatch({ type: ADD_PRODUCT, payload: result.data })
-
         if (result.filter !== null) {
             dispatch({ type: CHANGE_FILTER, payload: result.filter })
         }

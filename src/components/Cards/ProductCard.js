@@ -6,7 +6,7 @@ import { HeartFilled, HeartOutline } from '../../IconSet/Heart'
 import { CartIcon } from '../../IconSet/CartIcon'
 import ProductFeatures from "../ProductFeatures/ProductFeatures";
 import StarRating from "../StarRating/StarRating";
-import { ADD_TO_CART, ADD_TO_WISHLIST } from "../../redux/user/actionTypes";
+import { ADD_TO_CART, ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST } from "../../redux/user/actionTypes";
 import ProductPrice from "../ProductPrice/ProductPrice";
 
 export default function ProductCard({ details, isWishList, isAddedToCart }) {
@@ -42,7 +42,7 @@ export default function ProductCard({ details, isWishList, isAddedToCart }) {
         <div className="absolute left-3 bottom-2 text-sm">
             <FormattedMessage id="inStock" defaultMessage="{stock} in stock" values={{ stock }} />
         </div>
-        {isWishList ? <HeartFilled className="absolute right-2 top-2 cursor-pointer transform delay-100 hover:scale-110" /> :
+        {isWishList ? <HeartFilled className="absolute right-2 top-2 cursor-pointer transform delay-100 hover:scale-110" onClick={() => dispatch({ type: REMOVE_FROM_WISHLIST, payload: id })} /> :
             <HeartOutline className="absolute fill-current text-sp-btn-primary right-3 top-4 cursor-pointer transform delay-100 hover:scale-110" onClick={() => dispatch({ type: ADD_TO_WISHLIST, payload: id })} />}
         <button
             className={`absolute bottom-2 right-2 bg-sp-btn-primary text-white p-2 rounded transform delay-100 hover:bg-sp-btn-primary-dark z-20 focus:outline-none ${isAddedToCart ? 'opacity-50 cursor-not-allowed' : ''}`}
