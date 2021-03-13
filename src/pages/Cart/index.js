@@ -7,6 +7,7 @@ import ProductCartCard from '../../components/Cards/ProductCartCard'
 import MainSpinner from '../../components/LoadingSpinners/MainSpinner'
 import PriceSummary from '../../components/PriceSummary/PriceSummary'
 import { ADD_TO_ORDER } from '../../redux/user/actionTypes'
+import { removeCartItem as removeItem, moveToWishlist as addToWishList } from '../../redux/user/actions'
 
 
 import WifiOff from '../../IconSet/WifiOff'
@@ -96,6 +97,18 @@ export default function Cart() {
         setProducts(updatedProducts)
     }
 
+    const removeCartItem = (id) => {
+        const updatedProducts = products.filter(product => product.id !== id)
+        setProducts(updatedProducts)
+        dispatch(removeItem(id))
+    }
+
+    const moveToWishlist = (id) => {
+        const updatedProducts = products.filter(product => product.id !== id)
+        setProducts(updatedProducts)
+        dispatch(addToWishList(id))
+    }
+
     const placeOrder = () => {
         dispatch({ type: ADD_TO_ORDER, payload: products })
         // TODO Selected order is saved in 'order', redirect to checkout page here
@@ -138,6 +151,8 @@ export default function Cart() {
                         increaseQuantity={increaseQuantity}
                         decreaseQuantity={decreaseQuantity}
                         onQuantityChanged={onQuantityChanged}
+                        removeCartItem={removeCartItem}
+                        moveToWishlist={moveToWishlist}
                     />)}
                 </div>
                 <div ref={ref} className="w-full xl:pl-2 xl:min-w-lg xl:w-3/12">

@@ -6,7 +6,7 @@ import ProductFeatures from '../ProductFeatures/ProductFeatures'
 import Quantity from '../ProductFeatures/Quantity/index'
 import { FormattedMessage } from 'react-intl'
 
-export default function ProductCartCard({ product, increaseQuantity, decreaseQuantity, featureChangeHandler, onQuantityChanged }) {
+export default function ProductCartCard({ product, increaseQuantity, decreaseQuantity, featureChangeHandler, onQuantityChanged, removeCartItem, moveToWishlist }) {
     const { id, title, brand, stock, image, features, quantitySelected, selectedFeature, offer, originalPrice, currentPrice, currency } = product
 
     return <div className="flex flex-col sm:flex-row p-3 shadow border border-gray-200 mb-4 max-w-7xl">
@@ -41,11 +41,11 @@ export default function ProductCartCard({ product, increaseQuantity, decreaseQua
                 />
             </div>
             <div className="absolute flex w-full bottom-0">
-                <button className="flex items-center uppercase group hover:text-sp-heading-blue pr-3 border-r border-gray-500">
+                <button onClick={() => moveToWishlist(id)} className="flex items-center uppercase group hover:text-sp-heading-blue pr-3 border-r border-gray-500">
                     <HeartOutline className="fill-current mr-2 w-5 h-5 text-sp-text-default group-hover:text-sp-heading-blue" />
                     <FormattedMessage id="moveToWishlist" defaultMessage="Move to wishlist" />
                 </button>
-                <button className="flex items-center uppercase group hover:text-red-500 pl-3 border-gray-500">
+                <button onClick={() => removeCartItem(id)} className="flex items-center uppercase group hover:text-red-500 pl-3 border-gray-500">
                     <DeleteIcon className="fill-current mr-2 w-5 h-5 text-sp-text-default group-hover:text-red-500" />
                     <FormattedMessage id="remove" defaultMessage="remove" />
                 </button>
