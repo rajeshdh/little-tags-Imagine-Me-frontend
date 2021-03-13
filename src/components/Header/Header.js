@@ -27,7 +27,7 @@ function Header() {
         <div className="hidden sm:block">
           <div className="relative inline-flex items-center">
             <NavLink to={isAuthenticated ? "/cart" : "/login?redirect=/login"}>
-              <div className={`${cartLength === 0 ? 'hidden' : 'block'} absolute -top-1 left-2.5 w-5 h-5 flex justify-center items-center text-white text-xs bg-sp-btn-primary rounded-full`}>{cartLength}</div>
+              <div test-id="cart-badge" className={`${cartLength === 0 ? 'hidden' : 'block'} absolute -top-1 left-2.5 w-5 h-5 flex justify-center items-center text-white text-xs bg-sp-btn-primary rounded-full`}>{cartLength}</div>
               <NavButton>
                 <CartIcon />
                 <span className="hidden ml-2 md:inline-block">

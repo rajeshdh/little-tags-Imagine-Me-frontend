@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl'
 export default function ProductCartCard({ product, increaseQuantity, decreaseQuantity, featureChangeHandler, onQuantityChanged, removeCartItem, moveToWishlist }) {
     const { id, title, brand, stock, image, features, quantitySelected, selectedFeature, offer, originalPrice, currentPrice, currency } = product
 
-    return <div className="flex flex-col sm:flex-row p-3 shadow border border-gray-200 mb-4 max-w-7xl">
+    return <div test-id="product-cart-card" className="flex flex-col sm:flex-row p-3 shadow border border-gray-200 mb-4 max-w-7xl">
         <div className="flex items-center flex-col justify-center w-full sm:flex-col sm:max-w-min-l p-3">
             <Link to={`/product/${id}`}>
                 <img src={image} className="h-40" />
@@ -41,11 +41,11 @@ export default function ProductCartCard({ product, increaseQuantity, decreaseQua
                 />
             </div>
             <div className="absolute flex w-full bottom-0">
-                <button onClick={() => moveToWishlist(id)} className="flex items-center uppercase group hover:text-sp-heading-blue pr-3 border-r border-gray-500">
+                <button test-id="product-cart-card-wishlist" onClick={() => moveToWishlist(id)} className="flex items-center uppercase group hover:text-sp-heading-blue pr-3 border-r border-gray-500">
                     <HeartOutline className="fill-current mr-2 w-5 h-5 text-sp-text-default group-hover:text-sp-heading-blue" />
                     <FormattedMessage id="moveToWishlist" defaultMessage="Move to wishlist" />
                 </button>
-                <button onClick={() => removeCartItem(id)} className="flex items-center uppercase group hover:text-red-500 pl-3 border-gray-500">
+                <button test-id="product-cart-card-remove" onClick={() => removeCartItem(id)} className="flex items-center uppercase group hover:text-red-500 pl-3 border-gray-500">
                     <DeleteIcon className="fill-current mr-2 w-5 h-5 text-sp-text-default group-hover:text-red-500" />
                     <FormattedMessage id="remove" defaultMessage="remove" />
                 </button>
