@@ -142,9 +142,9 @@ export default function Cart() {
             <FormattedMessage id="noItemInCart" defaultMessage="No Items" />
         </ErrorMessage>
     } else {
-        html = <div className="flex flex-col mt-3 mx-3 sm:mx-10 md:mx-24 sm:flex-row">
+        html = <div className="flex flex-col mt-3 sm:mx-10 md:mx-24 sm:flex-row">
 
-            <div className="w-full">
+            <div className="w-full px-3">
                 <div className="text-2xl capitalize mb-4"> {'>'}
                     <span className="ml-2">
                         <FormattedMessage id="orderHistory" defaultMessage="order history" />
