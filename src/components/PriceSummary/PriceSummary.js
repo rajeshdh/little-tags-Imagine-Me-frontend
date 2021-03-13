@@ -15,6 +15,9 @@ export default function PriceSummary({ priceDetails, parentRef, totalPrice, plac
             }
             window.addEventListener("resize", changeWidth)
         }
+        return () => {
+            window.removeEventListener("resize", changeWidth)
+        }
     }, [parentRef])
 
     const changeWidth = () => {
