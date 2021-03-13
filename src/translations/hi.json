@@ -31,8 +31,17 @@
     "price": "रेट",
     "brands": "ब्रांड",
     "rating": "रेटिंग",
-    "apply" : "लागू",
+    "apply": "लागू",
     "color": "रंग",
     "size": "माप",
-    "quantity": "मात्रा"
+    "quantity": "मात्रा",
+    "noItemInCart": "कार्ट में कोई आइटम नहीं",
+    "networkError": "सर्वर कनेक्ट करने में त्रुटि",
+    "priceSummary": "कीमत सारांश",
+    "items": "आइटम",
+    "total": "संपूर्ण",
+    "placeOrder" : "आदेश देना",
+    "remove": "हटाना",
+    "moveToWishlist": "इच्छा सूची की ओर बदें",
+    "priceDetails": "मूल्य विवरण"
 }

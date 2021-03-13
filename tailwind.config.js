@@ -25,6 +25,7 @@ module.exports = {
     },
     maxWidth: {
       'min': '8rem',
+      'min-l': '14rem',
       'xs': '20rem',
       'sm': '24rem',
       'md': '28rem',
@@ -32,6 +33,10 @@ module.exports = {
       'xl': '36rem',
       '2xl': '42rem',
       '3xl': '48rem',
+      '4xl': '54rem',
+      '5xl': '60rem',
+      '6xl': '64rem',
+      '7xl': '72rem',
     },
     minWidth: {
       'h-1': '1.25rem',

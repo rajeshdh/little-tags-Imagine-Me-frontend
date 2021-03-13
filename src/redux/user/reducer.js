@@ -1,7 +1,7 @@
-import { ADD_TO_CART, ADD_TO_WISHLIST } from "./actionTypes";
+import { ADD_TO_CART, ADD_TO_ORDER, ADD_TO_WISHLIST } from "./actionTypes";
 
 const initialState = {
-    cart: ['product_id_1', 'product_id_4'],
+    cart: ['product_id_1', 'product_id_4', 'product_id_2', 'product_id_5'],
     wishList: ['product_id_3'],
     addresses: [],
     orderHistory: [],
@@ -23,6 +23,11 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 wishList
+            }
+        case ADD_TO_ORDER:
+            return {
+                ...state,
+                order: action.payload
             }
         default: return state;
     }
