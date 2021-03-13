@@ -11,6 +11,7 @@ const SearchPage = lazy(() => import("../pages/Search"))
 const Product = lazy(() => import("../pages/Product"))
 const Cart = lazy(() => import("../pages/Cart"))
 const WishList = lazy(() => import("../pages/Wishlist"))
+const OrderHistory = lazy(() => import("../pages/OrderHistory"))
 
 
 const Routes = () => {
@@ -22,6 +23,7 @@ const Routes = () => {
 			<Route exact path="/checkout" isPrivate component={Checkout} />
 			<Route exact path="/cart" isPrivate component={Cart} />
 			<Route exact path="/wishlist" isPrivate component={WishList} />
+			<Route exact path="/order-history" isPrivate component={OrderHistory} />
 
 			<Route exact path="/search" component={SearchPage} />
 			<Route exact path="/product/:productid" component={Product} />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -56,6 +56,11 @@ export default function Product(props) {
 
     return <>
         <div className="mx-3 pb-12 sm:pb-0 sm:mx-10 md:mx-24">
+            <div className="text-2xl capitalize mt-6"> {'>'}
+                <span className="ml-2">
+                    <FormattedMessage id="wishlist" defaultMessage="wishlist" />
+                </span>
+            </div>
             {result}
         </div>
     </>

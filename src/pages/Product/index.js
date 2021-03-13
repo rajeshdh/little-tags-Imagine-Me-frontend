@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import ProductCarousel from "../../components/ProductCarousel"
 import Ratings from "../../components/ProductFeatures/Ratings"
-import Colors from "../../components/ProductFeatures/Colors"
 import Quantity from "../../components/ProductFeatures/Quantity"
-import Size from "../../components/ProductFeatures/Size"
+import ProductFeatures from '../../components/ProductFeatures/ProductFeatures'
 import {
   ProductHeader, Price,
   ProductDescription, AddToCartButton, LikeButton
@@ -11,24 +10,8 @@ import {
 import { FormattedMessage } from 'react-intl'
 
 
-function ProductPage({ productData }) {
-  const [selectedColor, setSelectedColor] = useState(productData.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(productData.sizes[0])
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
+function ProductPage({ productData, featureSelectHandler, increaseQuantity, decreaseQuantity, onQuantityChanged }) {
 
-
-  function SetQuantity(value) {
-    value = value || 0;
-    setSelectedQuantity(value);
-  }
-
-  function increaseQuantity() {
-    setSelectedQuantity(prevState => Number(prevState) + 1);
-  }
-
-  function decreaseQuantity() {
-    setSelectedQuantity(prevState => Number(prevState) - 1);
-  }
 
   return (
     <div className="mx-3 pb-16 pt-8 sm:py-8 sm:mx-10 md:mx-24">
@@ -47,15 +30,18 @@ function ProductPage({ productData }) {
           </div>
           <Price price={productData.currentPrice} currency={productData.currency} />
           <ProductDescription description={productData.description} />
-          <Colors
-            colors={productData.colors}
-            selected={selectedColor}
-            onChange={setSelectedColor} />
-          <Size
-            selected={selectedSize}
-            sizes={productData.sizes}
-            onChange={setSelectedSize} />
-          <Quantity selected={selectedQuantity} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity} onChange={SetQuantity} />
+          {
+            productData.features ? <ProductFeatures
+              features={productData.features}
+              featuresSelected={productData.selectedFeature}
+              clickable={(type, index) => featureSelectHandler(productData.id, type, index)}
+            /> : null
+          }
+          <Quantity selected={productData.quantitySelected}
+            increaseQuantity={()=>increaseQuantity(productData.id)}
+            decreaseQuantity={()=>decreaseQuantity(productData.id)}
+            onChange={(quantity)=>onQuantityChanged(productData.id,quantity)}
+          />
           <div className="flex">
             <AddToCartButton />
 
@@ -77,12 +63,73 @@ export default function Product(props) {
     const fetchData = async () => {
       const response = await fetch(url)
       const result = await response.json()
-      setProductData(result)
+      const products = result.map(product => {
+        const features = product.features
+        const selectedFeature = {}
+        features.forEach(feature => {
+          selectedFeature[feature.type] = 0
+        })
+        product.quantitySelected = 1
+        product.selectedFeature = selectedFeature
+        return product
+      })
+      setProductData(products)
     }
 
     fetchData()
   }, []);
+  const featureSelectHandler = (id, feature, index) => {
+    const updatedProducts = productData.map(product => {
+      if (product.id === id) {
+        const selectedFeature = { ...product.selectedFeature }
+        selectedFeature[feature] = index
+        product.selectedFeature = selectedFeature
+      }
+      return product
+    })
 
-  return (productData && productData.length && <ProductPage productData={productData[0]} />)
+    setProductData(updatedProducts)
+  }
+
+
+  const decreaseQuantity = (id) => {
+    const updatedProducts = productData.map(product => {
+      if (product.id === id) {
+        const quantity = product.quantitySelected
+        product.quantitySelected = quantity - 1 > 0 ? quantity - 1 : quantity
+      }
+      return product
+    })
+    setProductData(updatedProducts)
+  }
+  const increaseQuantity = (id) => {
+    const updatedProducts = productData.map(product => {
+      if (product.id === id) {
+        const quantity = product.quantitySelected
+        product.quantitySelected = quantity + 1 > product.stock ? product.stock : quantity + 1
+      }
+      return product
+    })
+    setProductData(updatedProducts)
+  }
+
+  const onQuantityChanged = (id, quantity) => {
+    const updatedProducts = productData.map(product => {
+      if (product.id === id) {
+        product.quantitySelected = quantity > product.stock ? product.stock : quantity
+      }
+      return product
+    })
+    setProductData(updatedProducts)
+  }
+
+
+  return (productData && productData.length && <ProductPage
+    productData={productData[0]}
+    featureSelectHandler={featureSelectHandler}
+    decreaseQuantity={decreaseQuantity}
+    increaseQuantity={increaseQuantity}
+    onQuantityChanged={onQuantityChanged}
+  />)
 }
 
