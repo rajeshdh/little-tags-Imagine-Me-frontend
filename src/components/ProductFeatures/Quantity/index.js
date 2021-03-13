@@ -1,17 +1,17 @@
 import { FormattedMessage } from "react-intl";
 
-function Quantity({ selected, increaseQuantity, decreseQuantity, onChange }) {
+function Quantity({ small, max, selected, increaseQuantity, decreaseQuantity, onChange }) {
   return (
     <div className="flex mt-6 items-center mb-5">
       <div>
-        <span className="mr-3 font-bold text-lg"><FormattedMessage id="quantity" />:</span>
+        <span className={`${small ? 'hidden' : ''} mr-3 font-bold text-lg`}><FormattedMessage id="quantity" />:</span>
         <div className="flex mt-1">
 
           <button
-            className="text-sp-btn-primary bg-transparent border border-solid border-sp-btn-selected  hover:bg-sp-btn-selected  hover:text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none mr-1 mb-1"
+            className={`${small ? 'h-7 w-7 text-1xl' : 'h-10 w-10 text-2xl'} rounded-full bg-transparent border border-solid border-gray-400 mr-1 hover:bg-sp-btn-primary hover:border-sp-btn-primary hover:text-white active:bg-pink-600 focus:outline-none`}
             disabled={selected < 1}
             type="button"
-            onClick={decreseQuantity}
+            onClick={decreaseQuantity}
           >
             -
        </button>
@@ -20,18 +20,18 @@ function Quantity({ selected, increaseQuantity, decreseQuantity, onChange }) {
             type="number"
             value={selected}
             min={0}
-            className="text-sp-btn-primary bg-transparent 
-            border border-solid
-           border-sp-btn-selected active:bg-pink-600 
-           font-bold uppercase text-xs px-4 py-2 
-           rounded outline-none 
-            mr-1 mb-1
-           w-20"
+            max={max}
+            className={`${small ? 'w-10 h-7 px-1' : 'w-16 h-10 px-4'} bg-transparent 
+              border border-solid
+              border-gray-400 active:bg-pink-600 
+              font-bold uppercase text-sm text-center sm:text-right
+              rounded outline-none 
+              mr-1`}
             onChange={(e) => onChange(e.target.value)}
           />
 
           <button
-            className="text-sp-btn-primary bg-transparent border border-solid border-sp-btn-selected  hover:bg-sp-btn-selected  hover:text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none mr-1 mb-1"
+            className={`${small ? 'h-7 w-7 text-1xl' : 'h-10 w-10 text-2xl'} rounded-full bg-transparent border border-solid border-gray-400 mr-1 hover:bg-sp-btn-primary hover:border-sp-btn-primary hover:text-white active:bg-pink-600 focus:outline-none`}
             type="button"
             onClick={increaseQuantity}
           >
