@@ -35,7 +35,7 @@ function Address({ selected, addressInfo }) {
           type="button"
           onClick={() => dispatch(setSelectedAddress(id))}
         >
-          Deliver To This Address
+         <FormattedMessage id="setDeliveryAddress" defaultMessage="Deliver To This Address" />
         </button>
         </div>
       </div>
@@ -96,13 +96,14 @@ const dispatch = useDispatch();
     <div className="bg-white">
       <main className="my-8">
         <div className="container mx-auto px-6 lg:w-3/5">
-          <h3 className="text-gray-700 text-2xl font-medium">Checkout</h3>
+          <h3 className="text-gray-700 text-2xl font-medium">
+          <FormattedMessage id="checkout" defaultMessage="Checkout"/></h3>
           <div className="flex flex-col lg:flex-row mt-8">
             <div className="w-full lg:w-full">
               <form className="w-full" onSubmit={saveAddress}>
                 <div>
                   <h4 className="text-sm text-gray-500 font-medium">
-                    Select A Delivery Address
+                   <FormattedMessage id="selectDeliveryAddress" defaultMessage = "Select A Delivery Address" />
                   </h4>
                   <div className=" flex flex-wrap mt-6">
                     {addresses.map((address) => {
@@ -121,7 +122,7 @@ const dispatch = useDispatch();
                       type="button"
                       onClick={() => setShowAddressForm(true)}
                     >
-                      Add New Address
+                <FormattedMessage id="addNewAddress"  defaultMessage = "Add New Address" />
                     </button>
                   </div>
                   {showAddressForm && (

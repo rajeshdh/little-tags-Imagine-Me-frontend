@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 function Textbox({ type, name, onChange, placeholder, value, ...rest }) {
   return (
@@ -57,7 +57,7 @@ function AddressForm({
           <Textbox
             name="mobileNumber"
             type="number"
-            placeholder="10-digit mobile number without prefixes"
+            placeholder={useIntl().formatMessage({id: "mobileNumberPlaceholder", defaultMessage:"10-digit mobile number without prefixes"})}
             value={mobileNumber}
             onChange={(e) => onChange(e)}
             required
@@ -122,13 +122,13 @@ function AddressForm({
           htmlFor="pin"
           className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
         >
-          <FormattedMessage id="pin" defaultMessage="PIN code"/>
+          <FormattedMessage id="pincode" defaultMessage="PIN code"/>
         </label>
         <div className="relative">
           <Textbox
             name="pin"
             type="number"
-            placeholder="6 digits [0-9] PIN code"
+            placeholder={useIntl().formatMessage({id: "pincodePlaceholder", defaultMessage:"6 digits [0-9] PIN code"})}
             value={pin}
             onChange={(e) => onChange(e)}
             required
@@ -143,14 +143,14 @@ function AddressForm({
             type="checkbox"
             value={isDefault}
             onChange={(e) => onChange(e)}
-            checked={!!isDefault}
+            checked={isDefault}
           />
         </div>
         <label
           htmlFor="isDefault"
           className="mb-1 ml-2 text-xs sm:text-sm tracking-wide text-gray-600"
         >
-          <FormattedMessage id="isDefault" defaultMessage="Use as my default address." />
+          <FormattedMessage id="useAsDefault" defaultMessage="Use as my default address." />
         </label>
       </div>
     </>
