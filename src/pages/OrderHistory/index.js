@@ -3,25 +3,18 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { FormattedMessage } from 'react-intl'
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
-import ProductCartCard from '../../components/Cards/ProductCartCard'
 import MainSpinner from '../../components/LoadingSpinners/MainSpinner'
-import PriceSummary from '../../components/PriceSummary/PriceSummary'
-import { ADD_TO_ORDER } from '../../redux/user/actionTypes'
-import { removeCartItem as removeItem, moveToWishlist as addToWishList } from '../../redux/user/actions'
 
 
 import WifiOff from '../../IconSet/WifiOff'
 import EmptyIcon from '../../IconSet/EmptyIcon'
-import OrderHistoryCard from '../../components/Cards/OrderHistoryCard'
+import OrderHistoryContainer from '../../components/Cards/OrderHistoryCard/OrderHistoryContainer'
 
 export default function Cart() {
     const [products, setProducts] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [isError, setIsError] = useState(false)
 
-    const ref = useRef(null)
-
-    const dispatch = useDispatch()
 
     const cartItems = useSelector(state => state.user.cart)
     useEffect(() => {
@@ -30,7 +23,7 @@ export default function Cart() {
     const fetchCartItems = async () => {
         setIsLoading(true)
         try {
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/cart`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/order-history`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -55,79 +48,6 @@ export default function Cart() {
         setIsLoading(false)
     }
 
-    const featureSelectHandler = (id, feature, index) => {
-        const updatedProducts = products.map(product => {
-            if (product.id === id) {
-                const selectedFeature = { ...product.selectedFeature }
-                selectedFeature[feature] = index
-                product.selectedFeature = selectedFeature
-            }
-            return product
-        })
-        setProducts(updatedProducts)
-    }
-
-    const decreaseQuantity = (id) => {
-        const updatedProducts = products.map(product => {
-            if (product.id === id) {
-                const quantity = product.quantitySelected
-                product.quantitySelected = quantity - 1 > 0 ? quantity - 1 : quantity
-            }
-            return product
-        })
-        setProducts(updatedProducts)
-    }
-    const increaseQuantity = (id) => {
-        const updatedProducts = products.map(product => {
-            if (product.id === id) {
-                const quantity = product.quantitySelected
-                product.quantitySelected = quantity + 1 > product.stock ? product.stock : quantity + 1
-            }
-            return product
-        })
-        setProducts(updatedProducts)
-    }
-
-    const onQuantityChanged = (id, quantity) => {
-        const updatedProducts = products.map(product => {
-            if (product.id === id) {
-                product.quantitySelected = quantity > product.stock ? product.stock : quantity
-            }
-            return product
-        })
-        setProducts(updatedProducts)
-    }
-
-    const removeCartItem = (id) => {
-        const updatedProducts = products.filter(product => product.id !== id)
-        setProducts(updatedProducts)
-        dispatch(removeItem(id))
-    }
-
-    const moveToWishlist = (id) => {
-        const updatedProducts = products.filter(product => product.id !== id)
-        setProducts(updatedProducts)
-        dispatch(addToWishList(id))
-    }
-
-    const placeOrder = () => {
-        dispatch({ type: ADD_TO_ORDER, payload: products })
-        // TODO Selected order is saved in 'order', redirect to checkout page here
-    }
-
-    let totalPrice = 0
-    const priceDetails = products.map(product => {
-        const quantity = product.quantitySelected
-        const price = product.currentPrice * quantity
-        totalPrice += price
-        return {
-            title: product.title,
-            quantity,
-            price,
-            currency: product.currency
-        }
-    })
-
     let html = ""
     if (isLoading) {
         html = <MainSpinner />
@@ -143,16 +63,17 @@ export default function Cart() {
         </ErrorMessage>
     } else {
         html = <div className="flex flex-col mt-3 sm:mx-10 md:mx-24 sm:flex-row">
-
-            <div className="w-full px-3">
+            <div className="w-full px-3 sm:px-0 mb-10 lg:mb-0">
                 <div className="text-2xl capitalize mb-4"> {'>'}
                     <span className="ml-2">
                         <FormattedMessage id="orderHistory" defaultMessage="order history" />
                     </span>
                 </div>
-                {products.map((product, id) => <OrderHistoryCard
-                    key={`product_cart_card_id_${id}`}
+
+                {products.map((product, id) => <OrderHistoryContainer
+                    key={`product_history_container_id_${id}`}
                     product={product}
+                    id={id}
                 />)}
             </div>
         </div>

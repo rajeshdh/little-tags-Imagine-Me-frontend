@@ -37,6 +37,7 @@ export default function ProductCartCard({ product, increaseQuantity, decreaseQua
                 <ProductFeatures
                     features={features}
                     featuresSelected={selectedFeature}
+                    small
                     clickable={(type, index) => featureChangeHandler(id, type, index)}
                 />
             </div>
