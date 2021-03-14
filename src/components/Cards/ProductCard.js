@@ -33,7 +33,7 @@ export default function ProductCard({ details, isWishList, isAddedToCart }) {
                             offer={offer}
                         />
                         <div className="mb-5 sm:max-h-0 overflow-hidden transform transition-all duration-200 ease-in-out group-hover:max-h-full">
-                            <ProductFeatures features={features} />
+                            <ProductFeatures features={features} small={true} />
                         </div>
                     </div>
                 </div>

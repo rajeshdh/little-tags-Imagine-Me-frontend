@@ -142,26 +142,33 @@ export default function Cart() {
         </ErrorMessage>
     } else {
         html = <div className="flex flex-col mt-3 mx-3 sm:mx-10 md:mx-24 sm:flex-row">
-            <div className="flex flex-col mb-36 sm:mb-32 xl:mb-0 xl:flex-row w-full">
-                <div className="flex-grow">
-                    {products.map((product, id) => <ProductCartCard
-                        key={`product_cart_card_id_${id}`}
-                        product={product}
-                        featureChangeHandler={featureSelectHandler}
-                        increaseQuantity={increaseQuantity}
-                        decreaseQuantity={decreaseQuantity}
-                        onQuantityChanged={onQuantityChanged}
-                        removeCartItem={removeCartItem}
-                        moveToWishlist={moveToWishlist}
-                    />)}
+            <div className="w-full">
+                <div className="text-2xl capitalize mb-4"> {'>'}
+                    <span className="ml-2">
+                        <FormattedMessage id="cart" defaultMessage="cart" />
+                    </span>
                 </div>
-                <div ref={ref} className="w-full xl:pl-2 xl:min-w-lg xl:w-3/12">
-                    <PriceSummary
-                        parentRef={ref}
-                        priceDetails={priceDetails}
-                        totalPrice={totalPrice}
-                        placeOrder={placeOrder}
-                    />
+                <div className="flex flex-col mb-36 sm:mb-32 xl:mb-0 xl:flex-row w-full">
+                    <div className="flex-grow">
+                        {products.map((product, id) => <ProductCartCard
+                            key={`product_cart_card_id_${id}`}
+                            product={product}
+                            featureChangeHandler={featureSelectHandler}
+                            increaseQuantity={increaseQuantity}
+                            decreaseQuantity={decreaseQuantity}
+                            onQuantityChanged={onQuantityChanged}
+                            removeCartItem={removeCartItem}
+                            moveToWishlist={moveToWishlist}
+                        />)}
+                    </div>
+                    <div ref={ref} className="w-full xl:pl-2 xl:min-w-lg xl:w-3/12">
+                        <PriceSummary
+                            parentRef={ref}
+                            priceDetails={priceDetails}
+                            totalPrice={totalPrice}
+                            placeOrder={placeOrder}
+                        />
+                    </div>
                 </div>
             </div>
         </div>

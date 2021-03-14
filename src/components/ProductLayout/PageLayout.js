@@ -1,4 +1,7 @@
-import { FormattedMessage,FormattedNumber } from 'react-intl'
+import { FormattedMessage, FormattedNumber } from 'react-intl'
+import { useDispatch } from 'react-redux'
+import { ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST } from '../../redux/user/actionTypes'
+import { HeartFilled, HeartOutline } from '../../IconSet/Heart'
 
 export const ProductPageLayout = ({ children }) => {
   return (
@@ -46,12 +49,15 @@ export const Price = ({ price, currency }) => {
   </span>
 }
 
-export const LikeButton = () => {
+export const LikeButton = ({ isWishList, className, id }) => {
+  const dispatch = useDispatch()
   return (
-    <button title="Add To Favorites" className=" w-12 h-12 p-0 inline-flex items-center justify-center ml-4 hover:text-sp-btn-primary bg-transparent border border-solid border-sp-btn-selected">
-      <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5 transform delay-100 hover:scale-150" viewBox="0 0 24 24">
-        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-      </svg>
+    <button title="Add To Favorites"
+      className="focus:outline-none rounded group relative w-12 h-12 p-0 inline-flex items-center justify-center ml-4 hover:text-sp-btn-primary bg-transparent border border-solid border-sp-btn-selected"
+      onClick={() => dispatch({ type: isWishList ? REMOVE_FROM_WISHLIST : ADD_TO_WISHLIST, payload: id })}
+    >
+      {isWishList ? <HeartFilled className={`${className} absolute top-1/2 -translate-y-5 fill-current transform duration-100 group-hover:scale-110`} /> :
+        <HeartOutline className={`${className} absolute top-1/2 -translate-y-1/2 fill-current text-sp-btn-primary transform duration-100 group-hover:scale-110`} />}
     </button>)
 }
 
