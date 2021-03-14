@@ -31,14 +31,14 @@ function PaymentSelection() {
               <form className="w-full">
                 <div>
                   <h4 className="text-sm text-gray-500 font-medium">
-                    Selected Delivery Address
+                    Delivering To
                   </h4>
                   <div className=" flex flex-wrap mt-6 md:space-y-0 space-y-6">
                     <Address />
                   </div>
                 </div>
                 <h4 className="text-sm text-gray-500 font-medium">
-                    Select Payment Method
+                    Select A Payment Method
                   </h4>
                 <div className="mt-6">
                   <div  onClick={() => setPaymentMethod("razorpay")}  className="mt-2 flex items-center justify-between w-full bg-white rounded-md border-2 border-blue-500 p-4 focus:outline-none">
