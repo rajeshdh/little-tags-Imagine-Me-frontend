@@ -43,5 +43,8 @@
     "placeOrder" : "आदेश देना",
     "remove": "हटाना",
     "moveToWishlist": "इच्छा सूची की ओर बदें",
-    "priceDetails": "मूल्य विवरण"
+    "priceDetails": "मूल्य विवरण",
+    "buyNow": "अभी खरीदें",
+    "orderHistory" : "आदेश इतिहास",
+    "wishlist" : "तमन्ना"
 }

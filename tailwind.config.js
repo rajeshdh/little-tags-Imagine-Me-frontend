@@ -8,6 +8,9 @@ module.exports = {
       fontFamily: {
         sans: ['Poppins', ...defaultTheme.fontFamily.sans],
       },
+      height: {
+        'carousel-lg' : '32rem'
+      },
       colors: {
         'sp-white': '#FEFEFE', // sp - prefix for custom colors
         'sp-section-white': '#F9F9F9',
@@ -42,9 +45,6 @@ module.exports = {
     minWidth: {
       'h-1': '1.25rem',
       'lg': '20rem',
-    },
-    minWidth: {
-      'h-1': '1.25rem',
     },
     minHeight: {
       '0': '0',

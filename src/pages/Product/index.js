@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
 import ProductCarousel from "../../components/ProductCarousel"
 import Ratings from "../../components/ProductFeatures/Ratings"
 import Quantity from "../../components/ProductFeatures/Quantity"
 import ProductFeatures from '../../components/ProductFeatures/ProductFeatures'
 import {
   ProductHeader, Price,
-  ProductDescription, AddToCartButton, LikeButton
+  ProductDescription, LikeButton
 } from "../../components/ProductLayout/PageLayout"
+import { CartIcon } from '../../IconSet/CartIcon'
 import { FormattedMessage } from 'react-intl'
+import { ADD_TO_CART } from '../../redux/user/actionTypes'
 
 
 function ProductPage({ productData, featureSelectHandler, increaseQuantity, decreaseQuantity, onQuantityChanged }) {
+
+  const { cartItems, wishlist } = useSelector(state => ({ cartItems: state.user.cart, wishlist: state.user.wishList }))
+  const dispatch = useDispatch()
+
+  const isAddedToCart = cartItems.includes(productData.id)
+  const isWishList = wishlist.includes(productData.id)
 
 
   return (
@@ -30,22 +40,33 @@ function ProductPage({ productData, featureSelectHandler, increaseQuantity, decr
           </div>
           <Price price={productData.currentPrice} currency={productData.currency} />
           <ProductDescription description={productData.description} />
-          {
-            productData.features ? <ProductFeatures
-              features={productData.features}
-              featuresSelected={productData.selectedFeature}
-              clickable={(type, index) => featureSelectHandler(productData.id, type, index)}
-            /> : null
-          }
+          <div className="my-3">
+            {
+              productData.features ? <ProductFeatures
+                features={productData.features}
+                featuresSelected={productData.selectedFeature}
+                clickable={(type, index) => featureSelectHandler(productData.id, type, index)}
+              /> : null
+            }
+          </div>
           <Quantity selected={productData.quantitySelected}
-            increaseQuantity={()=>increaseQuantity(productData.id)}
-            decreaseQuantity={()=>decreaseQuantity(productData.id)}
-            onChange={(quantity)=>onQuantityChanged(productData.id,quantity)}
+            increaseQuantity={() => increaseQuantity(productData.id)}
+            decreaseQuantity={() => decreaseQuantity(productData.id)}
+            onChange={(quantity) => onQuantityChanged(productData.id, quantity)}
           />
           <div className="flex">
-            <AddToCartButton />
+            <button className="py-2 px-5 text-white bg-sp-btn-primary font-semibold capitalize rounded mr-2 w-72 hover:bg-btn-primary-dark">
+              <FormattedMessage id="buyNow" defaultMessage="buy now" />
+            </button>
+            <button
+              className={`bg-sp-btn-primary text-white px-5 rounded transform delay-100 hover:bg-sp-btn-primary-dark z-20 focus:outline-none ${isAddedToCart ? 'opacity-50 cursor-not-allowed' : ''}`}
+              disabled={isAddedToCart}
+              onClick={() => dispatch({ type: ADD_TO_CART, payload: productData.id })}
+            >
+              <CartIcon fill="white" />
+            </button>
 
-            <LikeButton />
+            <LikeButton isWishList={isWishList} id={productData.id} />
           </div>
         </div>
       </div>

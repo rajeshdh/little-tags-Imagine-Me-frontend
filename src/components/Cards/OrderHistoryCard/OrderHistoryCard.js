@@ -41,6 +41,7 @@ export default function OrderHistoryCard({ product }) {
                 <ProductFeatures
                     features={features}
                     featuresSelected={selectedFeature}
+                    small
                 />
             </div>
         </div>
