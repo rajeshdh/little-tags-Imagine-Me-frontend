@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
+import {useSelector } from 'react-redux'
 
-function Address() {
+function Address({addressInfo}) {
+  const { fullName, address, mobileNumber, state, city, pin } = addressInfo;
   return (
     <div className="w-full flex pb-6">
       <div className="flex-grow">
-        <h2 className="text-gray-900 text-lg title-font font-medium mb-2">
-          Shooting Stars
+      <h2 className="text-gray-900 text-lg title-font font-medium mb-2 ml-1">
+          {fullName}
         </h2>
-        <p className="leading-relaxed text-base">
-          Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-          taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi
-          pug VHS try-hard ugh iceland kickstarter tumblr live-edge tilde.
+        <p className="leading-relaxed text-base ml-1">{address}</p>
+        <p className="leading-relaxed text-base ml-1">{city}</p>
+        <p className="leading-relaxed text-base ml-1">
+          {state} - {pin}
         </p>
+        <p className="leading-relaxed text-base ml-1">{mobileNumber}</p>
       </div>
     </div>
   );
@@ -20,6 +23,13 @@ function Address() {
 
 function PaymentSelection() {
   const [paymentMethod, setPaymentMethod] = useState("razorpay");
+  const { addresses, selectedAddress } = useSelector(state => ({
+    addresses: state.user.addresses,
+    selectedAddress: state.user.selectedAddress,
+    error: state.product.error,
+    isLoading: state.product.isLoading
+}));
+const deliveryAddress = addresses.find((item) => item.id === selectedAddress);
 
   return (
     <div className="bg-white">
@@ -34,7 +44,7 @@ function PaymentSelection() {
                     Delivering To
                   </h4>
                   <div className=" flex flex-wrap mt-6 md:space-y-0 space-y-6">
-                    <Address />
+                    <Address addressInfo={deliveryAddress} />
                   </div>
                 </div>
                 <h4 className="text-sm text-gray-500 font-medium">

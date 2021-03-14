@@ -2,44 +2,15 @@ import React, { useState } from "react";
 import AddressForm from "./AddressForm";
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux'
 
-let addresses = [
-  {
-    id: 1,
-    fullName: "Matsya  Chanda",
-    mobileNumber: "00792322080",
-    address: "Sector-26, Gandhinagar",
-    state: "Gujarat",
-    city: "Ahmedabad",
-    pin: "382044",
-    isDefault: false,
-  },
-  {
-    id: 3,
-    fullName: "Samantaka  Sachar",
-    mobileNumber: "02222059092",
-    address: "38 nd Floor Kalbadevidevi Road, Tak Wadi Bhd / , Kalbadevi",
-    state: "Maharashtra",
-    city: "Mumbai",
-    pin: "400002",
-    isDefault: true,
-  },
-  {
-    id: 2,
-    fullName: "Amritha  Sathe",
-    mobileNumber: "02222011939",
-    address: "375 , Kalbadevi Road, Kalbadevi",
-    state: " Maharashtra",
-    city: "Mumbai",
-    pin: "400002",
-    isDefault: false,
-  },
- 
-];
+import { addAddress, setSelectedAddress } from '../../redux/user/actions'
 
-function Address({ selected, addressInfo, setSelectedAddress }) {
+
+function Address({ selected, addressInfo }) {
   const { id, fullName, address, mobileNumber, state, city, pin } = addressInfo;
-
+  const dispatch = useDispatch();
+  
   return (
     <div
       className={`md:w-1/2 flex mt-2 pb-2  relative ${
@@ -61,7 +32,7 @@ function Address({ selected, addressInfo, setSelectedAddress }) {
           className="flex ml-1 mt-2 text-sp-btn-primary font-bold  
            py-2 px-6 rounded border-2 border-sp-btn-primary hover:bg-sp-btn-primary hover:text-white"
           type="button"
-          onClick={() => setSelectedAddress(id)}
+          onClick={() => dispatch(setSelectedAddress(id))}
         >
           Deliver To This Address
         </button>
@@ -71,6 +42,12 @@ function Address({ selected, addressInfo, setSelectedAddress }) {
 }
 
 function Checkout() {
+  const { addresses, selectedAddress } = useSelector(state => ({
+    addresses: state.user.addresses,
+    selectedAddress: state.user.selectedAddress,
+    error: state.product.error,
+    isLoading: state.product.isLoading
+}))
   const history = useHistory();
 
   const proceedToPayment = () =>{ 
@@ -82,7 +59,6 @@ function Checkout() {
   }
 
   const [showAddressForm, setShowAddressForm] = React.useState(false);
-  const [selectedAddress, setSelectedAddress] = React.useState("");
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -103,13 +79,14 @@ function Checkout() {
       [name]: value,
     });
   };
+const dispatch = useDispatch();
 
   const saveAddress = (e) => {
     e.preventDefault()
-    console.log(formData);
     let id = Math.random();
-    addresses.push({...formData, id})
-    setSelectedAddress(id);
+    console.log('saving')
+    dispatch(addAddress({...formData, id}))
+    dispatch(setSelectedAddress(id));
     setShowAddressForm(false);
   }
 
@@ -130,7 +107,6 @@ function Checkout() {
                       return (
                         <Address
                           selected={selectedAddress === address.id}
-                          setSelectedAddress={setSelectedAddress}
                           key={address.id}
                           addressInfo={address}
                         />
