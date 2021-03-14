@@ -134,7 +134,7 @@ function Checkout() {
                   </div>
                   <div className="flex justify-end mt-6">
                     <button
-                      className="flex text-white bg-sp-btn-selected border-0 py-3 px-14 sm:px-24 font-bold hover:bg-sp-btn-selected-dark rounded"
+                      className="capitalize cursor-pointer underline font-light text-lg text-green-800  "
                       type="button"
                       onClick={() => setShowAddressForm(true)}
                     >
@@ -157,7 +157,7 @@ function Checkout() {
                   {showAddressForm && (
                     <button
                       typ="submit"
-                      className="flex text-white bg-sp-btn-selected border-0 py-3 px-14 sm:px-24 font-bold hover:bg-sp-btn-selected-dark rounded"
+                      className="flex text-white bg-sp-btn-selected border-0 py-3 mb-6 px-14 sm:px-24 font-bold hover:bg-sp-btn-selected-dark rounded"
                     >
                       <FormattedMessage
                         id="saveAddress"
@@ -169,7 +169,7 @@ function Checkout() {
                   <button
                     type="button"
                     onClick={proceedToPayment}
-                    className="flex text-white bg-sp-btn-primary border-0 py-3 px-14 sm:px-24 font-bold hover:bg-sp-btn-primary-dark rounded"
+                    className="flex text-white bg-sp-btn-primary border-0 py-3 mb-6 px-14 sm:px-24 font-bold hover:bg-sp-btn-primary-dark rounded"
                   >
                     <FormattedMessage
                       id="proceedToPayment"
