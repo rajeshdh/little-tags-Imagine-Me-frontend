@@ -8,7 +8,7 @@ import MainSpinner from '../../components/LoadingSpinners/MainSpinner'
 import PriceSummary from '../../components/PriceSummary/PriceSummary'
 import { ADD_TO_ORDER } from '../../redux/user/actionTypes'
 import { removeCartItem as removeItem, moveToWishlist as addToWishList } from '../../redux/user/actions'
-
+import { useHistory } from "react-router-dom";
 
 import WifiOff from '../../IconSet/WifiOff'
 import EmptyIcon from '../../IconSet/EmptyIcon'
@@ -109,9 +109,13 @@ export default function Cart() {
         dispatch(addToWishList(id))
     }
 
+    const history = useHistory();
+
     const placeOrder = () => {
         dispatch({ type: ADD_TO_ORDER, payload: products })
         // TODO Selected order is saved in 'order', redirect to checkout page here
+        let path = `checkout`; 
+        history.push(path);
     }
 
     let totalPrice = 0

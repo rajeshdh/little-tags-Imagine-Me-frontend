@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { FormattedMessage, FormattedNumber } from "react-intl";
 import ProductPriceDetails from "./ProductPriceDetails";
 
-export default function PriceSummary({ priceDetails, parentRef, totalPrice, placeOrder }) {
+export default function PriceSummary({ priceDetails, parentRef, totalPrice, placeOrder, hideButton = false }) {
     const [width, setWidth] = useState(0)
     const [hidden, setHidden] = useState(true)
 
@@ -58,7 +58,7 @@ export default function PriceSummary({ priceDetails, parentRef, totalPrice, plac
                 </div>
             </div>
 
-            <button onClick={placeOrder} className="block w-full rounded uppercase font-semibold py-3 bg-sp-btn-primary text-white focus:outline-none hover:bg-sp-btn-primary-dark"><FormattedMessage id="placeOrder" defaultMessage="place order" /></button>
+           {!hideButton && <button onClick={placeOrder} className="block w-full rounded uppercase font-semibold py-3 bg-sp-btn-primary text-white focus:outline-none hover:bg-sp-btn-primary-dark"><FormattedMessage id="placeOrder" defaultMessage="place order" /></button> }
         </div>
     </div>
 }

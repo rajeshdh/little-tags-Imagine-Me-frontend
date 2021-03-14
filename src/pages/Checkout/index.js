@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import AddressForm from "./AddressForm";
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 
-import { addAddress, setSelectedAddress } from '../../redux/user/actions'
-
+import { addAddress, setSelectedAddress } from "../../redux/user/actions";
+import MainSpinner from '../../components/LoadingSpinners/MainSpinner'
+import WifiOff from '../../IconSet/WifiOff'
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 
 function Address({ selected, addressInfo }) {
   const { id, fullName, address, mobileNumber, state, city, pin } = addressInfo;
   const dispatch = useDispatch();
-  
+
   return (
     <div
       className={`md:w-1/2 flex mt-2 pb-2  relative ${
@@ -18,7 +20,6 @@ function Address({ selected, addressInfo }) {
       } `}
     >
       <div className="flex-grow select-none">
-
         <h2 className="text-gray-900 text-lg title-font font-medium mb-2 ml-1">
           {fullName}
         </h2>
@@ -29,14 +30,17 @@ function Address({ selected, addressInfo }) {
         </p>
         <p className="leading-relaxed text-base ml-1">{mobileNumber}</p>
         <div class="flex justify-start">
-        <button
-          className="flex ml-1 mt-2 text-sp-btn-primary font-bold  
+          <button
+            className="flex ml-1 mt-2 text-sp-btn-primary font-bold  
            py-2 px-6 rounded border-2 border-sp-btn-primary hover:bg-sp-btn-primary hover:text-white"
-          type="button"
-          onClick={() => dispatch(setSelectedAddress(id))}
-        >
-         <FormattedMessage id="setDeliveryAddress" defaultMessage="Deliver To This Address" />
-        </button>
+            type="button"
+            onClick={() => dispatch(setSelectedAddress(id))}
+          >
+            <FormattedMessage
+              id="setDeliveryAddress"
+              defaultMessage="Deliver To This Address"
+            />
+          </button>
         </div>
       </div>
     </div>
@@ -44,21 +48,21 @@ function Address({ selected, addressInfo }) {
 }
 
 function Checkout() {
-  const { addresses, selectedAddress } = useSelector(state => ({
+  const { addresses, selectedAddress, error, isLoading } = useSelector((state) => ({
     addresses: state.user.addresses,
     selectedAddress: state.user.selectedAddress,
     error: state.product.error,
-    isLoading: state.product.isLoading
-}))
+    isLoading: state.product.isLoading,
+  }));
   const history = useHistory();
 
-  const proceedToPayment = () =>{ 
-    if(!selectedAddress){
-      return alert("Please select a delivery address.")
+  const proceedToPayment = () => {
+    if (!selectedAddress) {
+      return alert("Please select a delivery address.");
     }
-    let path = `payment`; 
+    let path = `payment`;
     history.push(path);
-  }
+  };
 
   const [showAddressForm, setShowAddressForm] = React.useState(false);
 
@@ -81,29 +85,41 @@ function Checkout() {
       [name]: value,
     });
   };
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const saveAddress = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let id = Math.random();
-    console.log('saving')
-    dispatch(addAddress({...formData, id}))
+    console.log("saving");
+    dispatch(addAddress({ ...formData, id }));
     dispatch(setSelectedAddress(id));
     setShowAddressForm(false);
-  }
+  };
 
-  return (
-    <div className="bg-white">
+  let html = ""
+  if (isLoading) {
+      html = <MainSpinner />
+  } else if (error) {
+      html = <ErrorMessage>
+          <WifiOff className="w-10 h-10 md:w-16 md:h-16 fill-current text-gray-500 mr-2" />
+          <FormattedMessage id="networkError" defaultMessage="Error connecting server" />
+      </ErrorMessage>
+  } else {
+      html =  <div className="bg-white">
       <main className="my-8">
         <div className="container mx-auto px-6 lg:w-3/5">
           <h3 className="text-gray-700 text-2xl font-medium">
-          <FormattedMessage id="checkout" defaultMessage="Checkout"/></h3>
+            <FormattedMessage id="checkout" defaultMessage="Checkout" />
+          </h3>
           <div className="flex flex-col lg:flex-row mt-8">
             <div className="w-full lg:w-full">
               <form className="w-full" onSubmit={saveAddress}>
                 <div>
                   <h4 className="text-sm text-gray-500 font-medium">
-                   <FormattedMessage id="selectDeliveryAddress" defaultMessage = "Select A Delivery Address" />
+                    <FormattedMessage
+                      id="selectDeliveryAddress"
+                      defaultMessage="Select A Delivery Address"
+                    />
                   </h4>
                   <div className=" flex flex-wrap mt-6">
                     {addresses.map((address) => {
@@ -122,7 +138,10 @@ const dispatch = useDispatch();
                       type="button"
                       onClick={() => setShowAddressForm(true)}
                     >
-                <FormattedMessage id="addNewAddress"  defaultMessage = "Add New Address" />
+                      <FormattedMessage
+                        id="addNewAddress"
+                        defaultMessage="Add New Address"
+                      />
                     </button>
                   </div>
                   {showAddressForm && (
@@ -146,7 +165,7 @@ const dispatch = useDispatch();
                       />
                     </button>
                   )}
-                  
+
                   <button
                     type="button"
                     onClick={proceedToPayment}
@@ -164,7 +183,9 @@ const dispatch = useDispatch();
         </div>
       </main>
     </div>
-  );
+    }
+
+    return html
 }
 
 export default Checkout;
