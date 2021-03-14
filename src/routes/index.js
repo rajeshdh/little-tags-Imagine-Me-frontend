@@ -13,6 +13,7 @@ const Product = lazy(() => import("../pages/Product"))
 const Cart = lazy(() => import("../pages/Cart"))
 const WishList = lazy(() => import("../pages/Wishlist"))
 const OrderHistory = lazy(() => import("../pages/OrderHistory"))
+const ThankYou = lazy(() => import("../pages/Checkout/ThankYou"))
 
 
 const Routes = () => {
@@ -24,6 +25,7 @@ const Routes = () => {
 			{/* <Route exact path="/checkout" isPrivate component={Checkout} /> */}
 			<Route exact path="/checkout"  component={Checkout} />
 				<Route exact path="/payment"  component={Payment} />
+				<Route exact path="/thankyou"  component={ThankYou} />
 			<Route exact path="/cart" isPrivate component={Cart} />
 			<Route exact path="/wishlist" isPrivate component={WishList} />
 			<Route exact path="/order-history" isPrivate component={OrderHistory} />

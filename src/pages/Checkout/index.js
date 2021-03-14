@@ -28,6 +28,7 @@ function Address({ selected, addressInfo }) {
           {state} - {pin}
         </p>
         <p className="leading-relaxed text-base ml-1">{mobileNumber}</p>
+        <div class="flex justify-start">
         <button
           className="flex ml-1 mt-2 text-sp-btn-primary font-bold  
            py-2 px-6 rounded border-2 border-sp-btn-primary hover:bg-sp-btn-primary hover:text-white"
@@ -36,6 +37,7 @@ function Address({ selected, addressInfo }) {
         >
           Deliver To This Address
         </button>
+        </div>
       </div>
     </div>
   );
