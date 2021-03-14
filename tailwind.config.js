@@ -37,10 +37,11 @@ module.exports = {
       '5xl': '60rem',
       '6xl': '64rem',
       '7xl': '72rem',
+      'full': '100%',
     },
     minWidth: {
       'h-1': '1.25rem',
-      'lg' : '20rem',
+      'lg': '20rem',
     },
     minWidth: {
       'h-1': '1.25rem',
@@ -51,6 +52,21 @@ module.exports = {
       '1/2': '50%',
       '3/4': '75%',
       'full': '100%',
+    },
+    scale: {
+      '0': '0',
+      '25': '.25',
+      '50': '.5',
+      '75': '.75',
+      '90': '.9',
+      '95': '.95',
+      '100': '1',
+      '101': '1.01',
+      '105': '1.05',
+      '110': '1.1',
+      '125': '1.25',
+      '150': '1.5',
+      '200': '2',
     }
   },
   variants: {
@@ -60,7 +76,9 @@ module.exports = {
       stroke: ["hover"],
       backgroundColor: ['checked'],
       borderColor: ['checked'],
-      cursor: ['disabled']
+      cursor: ['disabled'],
+      scale: ['group-hover'],
+      margin: ['group-hover'],
     }
   },
   plugins: [],
