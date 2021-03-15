@@ -14,7 +14,7 @@ function Address({ addressInfo }) {
   return (
     <div className="w-full flex pb-6">
       <div className="flex-grow">
-        <h2 className="text-gray-900 text-lg title-font font-medium mb-2 ml-1">
+        <h2 className="text-gray-900 text-lg title-font font-bold mb-2 ml-1">
           {fullName}
         </h2>
         <p className="leading-relaxed text-base ml-1">{address}</p>
@@ -122,7 +122,7 @@ function PaymentSelection() {
                 <div className="w-full lg:w-full">
                   <form className="w-full">
                     <div>
-                      <h4 className="text-sm text-gray-500 font-medium">
+                      <h4 className="text-lg text-gray-500 font-medium">
                         <FormattedMessage
                           id="deliveryAddress"
                           defaultMessage="Delivering To"
@@ -132,7 +132,7 @@ function PaymentSelection() {
                         <Address addressInfo={deliveryAddress} />
                       </div>
                     </div>
-                    <h4 className="text-sm text-gray-500 font-medium">
+                    <h4 className="text-lg text-gray-500 font-medium">
                       <FormattedMessage
                         id="setDeliveryAddress"
                         defaultMessage="Select A Payment Method"

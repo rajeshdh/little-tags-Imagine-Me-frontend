@@ -55,15 +55,16 @@ function ProductPage({ productData, featureSelectHandler, increaseQuantity, decr
             onChange={(quantity) => onQuantityChanged(productData.id, quantity)}
           />
           <div className="flex">
-            <button className="py-2 px-5 text-white bg-sp-btn-primary font-semibold capitalize rounded mr-2 w-72 hover:bg-btn-primary-dark">
+            {/* <button className="py-2 px-5 text-white bg-sp-btn-primary font-semibold capitalize rounded mr-2 w-72 hover:bg-btn-primary-dark">
               <FormattedMessage id="buyNow" defaultMessage="buy now" />
-            </button>
+            </button> */}
             <button
               className={`bg-sp-btn-primary text-white px-5 rounded transform delay-100 hover:bg-sp-btn-primary-dark z-20 focus:outline-none ${isAddedToCart ? 'opacity-50 cursor-not-allowed' : ''}`}
               disabled={isAddedToCart}
               onClick={() => dispatch({ type: ADD_TO_CART, payload: productData.id })}
             >
-              <CartIcon fill="white" />
+              {/* <CartIcon fill="white" /> */}
+              <FormattedMessage id="addToCart" defaultMessage="Add To Cart" />
             </button>
 
             <LikeButton isWishList={isWishList} id={productData.id} />
