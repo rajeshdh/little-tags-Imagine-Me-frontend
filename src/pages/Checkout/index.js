@@ -16,11 +16,11 @@ function Address({ selected, addressInfo }) {
   return (
     <div
       className={`md:w-1/2 flex mt-2 pb-2  relative ${
-        selected ? "border-2 border-blue500" : ""
+        selected ? "border-2 border-blue-500" : ""
       } `}
     >
       <div className="flex-grow select-none">
-        <h2 className="text-gray-900 text-lg title-font font-medium mb-2 ml-1">
+        <h2 className="text-gray-900 text-lg title-font font-bold mb-2 ml-1">
           {fullName}
         </h2>
         <p className="leading-relaxed text-base ml-1">{address}</p>
@@ -29,7 +29,7 @@ function Address({ selected, addressInfo }) {
           {state} - {pin}
         </p>
         <p className="leading-relaxed text-base ml-1">{mobileNumber}</p>
-        <div class="flex justify-start">
+        <div className="flex justify-start">
           <button
             className="flex ml-1 mt-2 text-sp-btn-primary font-bold  
            py-2 px-6 rounded border-2 border-sp-btn-primary hover:bg-sp-btn-primary hover:text-white"
@@ -38,7 +38,7 @@ function Address({ selected, addressInfo }) {
           >
             <FormattedMessage
               id="setDeliveryAddress"
-              defaultMessage="Deliver To This Address"
+              defaultMessage="Deliver Here"
             />
           </button>
         </div>
@@ -115,7 +115,7 @@ function Checkout() {
             <div className="w-full lg:w-full">
               <form className="w-full" onSubmit={saveAddress}>
                 <div>
-                  <h4 className="text-sm text-gray-500 font-medium">
+                  <h4 className="text-lg text-gray-500 font-medium">
                     <FormattedMessage
                       id="selectDeliveryAddress"
                       defaultMessage="Select A Delivery Address"
@@ -134,7 +134,8 @@ function Checkout() {
                   </div>
                   <div className="flex justify-end mt-6">
                     <button
-                      className="capitalize cursor-pointer underline font-light text-lg text-green-800  "
+                      className="flex ml-1 mt-2 text-black font-bold  
+           py-2 px-6 rounded border-2 border-sp-btn-selected hover:bg-sp-btn-selected-dark hover:text-white"
                       type="button"
                       onClick={() => setShowAddressForm(true)}
                     >
@@ -157,7 +158,7 @@ function Checkout() {
                   {showAddressForm && (
                     <button
                       typ="submit"
-                      className="flex text-white bg-sp-btn-selected border-0 py-3 mb-6 px-14 sm:px-24 font-bold hover:bg-sp-btn-selected-dark rounded"
+                      className="w-full text-white bg-sp-btn-selected border-0 py-3 mb-6 px-14 sm:px-24 font-bold hover:bg-sp-btn-selected-dark rounded"
                     >
                       <FormattedMessage
                         id="saveAddress"
@@ -169,7 +170,7 @@ function Checkout() {
                   <button
                     type="button"
                     onClick={proceedToPayment}
-                    className="flex text-white bg-sp-btn-primary border-0 py-3 mb-6 px-14 sm:px-24 font-bold hover:bg-sp-btn-primary-dark rounded"
+                    className=" w-full text-white bg-sp-btn-primary border-0 py-3 mb-6 px-14 sm:px-24 font-bold hover:bg-sp-btn-primary-dark rounded"
                   >
                     <FormattedMessage
                       id="proceedToPayment"
