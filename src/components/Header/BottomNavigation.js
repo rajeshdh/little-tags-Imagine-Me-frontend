@@ -14,9 +14,9 @@ export default function BottomNavigation() {
       <NavLink to="/" className="pt-4 pb-4 pr-3">
         <HomeIcon />
       </NavLink>
-      <NavLink to="/trending" className="pt-3 pb-3 pr-3">
+      {/* <NavLink to="/trending" className="pt-3 pb-3 pr-3">
         <TrendingIcon />
-      </NavLink>
+      </NavLink> */}
       <NavLink to={isAuthenticated ? "/cart" : "/login?redirect=/cart"} className="relative pt-3 pb-3 pr-3">
         <div className={`${cartLength === 0 ? 'hidden' : 'block'} absolute -top-0.5 -left-2.5 w-5 h-5 flex justify-center items-center text-white text-xs bg-sp-btn-primary rounded-full`}>{cartLength}</div>
         <CartIcon />

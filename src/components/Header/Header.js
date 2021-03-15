@@ -18,11 +18,11 @@ function Header() {
       <nav className="flex flex-wrap mx-3 items-center justify-center sm:justify-between sm:py-3 bg-sp-white sm:mx-10 border-b sm:border-grey-400 sm:border-0 md:mx-24">
         <div className="flex items-center  ">
           <Logo />
-          <div className="hidden sm:block">
+          {/* <div className="hidden sm:block">
             <NavLink to="/trending">
               <FormattedMessage id="trending" />
             </NavLink>
-          </div>
+          </div> */}
         </div>
         <div className="hidden sm:block">
           <div className="relative inline-flex items-center">

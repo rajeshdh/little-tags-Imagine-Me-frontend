@@ -25,7 +25,7 @@ function AddressForm({
   city,
   pin,
   isDefault,
-  onChange
+  onChange,
 }) {
   return (
     <>
@@ -34,7 +34,10 @@ function AddressForm({
           htmlFor="fullName"
           className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
         >
-          <FormattedMessage id="fullName" defaultMessage="Full name (First and Last name)" />
+          <FormattedMessage
+            id="fullName"
+            defaultMessage="Full name (First and Last name)"
+          />
         </label>
         <div className="relative">
           <Textbox
@@ -57,12 +60,20 @@ function AddressForm({
           <Textbox
             name="mobileNumber"
             type="number"
-            placeholder={useIntl().formatMessage({id: "mobileNumberPlaceholder", defaultMessage:"10-digit mobile number without prefixes"})}
+            placeholder={useIntl().formatMessage({
+              id: "mobileNumberPlaceholder",
+              defaultMessage: "10-digit mobile number without prefixes",
+            })}
             value={mobileNumber}
             onChange={(e) => onChange(e)}
             required
           />
-          <span className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">May be used to assist delivery</span>
+          <span className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">
+            <FormattedMessage
+              id="assistDelivery"
+              defaultMessage="May be used to assist delivery"
+            />
+          </span>
         </div>
       </div>
       <div className="flex flex-col mb-6">
@@ -70,7 +81,7 @@ function AddressForm({
           htmlFor="address"
           className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
         >
-          <FormattedMessage id="address" defaultMessage="Address"/>
+          <FormattedMessage id="address" defaultMessage="Address" />
         </label>
         <div className="relative">
           <textarea
@@ -122,13 +133,16 @@ function AddressForm({
           htmlFor="pin"
           className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
         >
-          <FormattedMessage id="pincode" defaultMessage="PIN code"/>
+          <FormattedMessage id="pincode" defaultMessage="PIN code" />
         </label>
         <div className="relative">
           <Textbox
             name="pin"
             type="number"
-            placeholder={useIntl().formatMessage({id: "pincodePlaceholder", defaultMessage:"6 digits [0-9] PIN code"})}
+            placeholder={useIntl().formatMessage({
+              id: "pincodePlaceholder",
+              defaultMessage: "6 digits [0-9] PIN code",
+            })}
             value={pin}
             onChange={(e) => onChange(e)}
             required
@@ -136,7 +150,6 @@ function AddressForm({
         </div>
       </div>
       <div className="flex justify-start items-start mb-6">
-   
         <div className="relative">
           <input
             name="isDefault"
@@ -150,7 +163,10 @@ function AddressForm({
           htmlFor="isDefault"
           className="mb-1 ml-2 text-xs sm:text-sm tracking-wide text-gray-600"
         >
-          <FormattedMessage id="useAsDefault" defaultMessage="Use as my default address." />
+          <FormattedMessage
+            id="useAsDefault"
+            defaultMessage="Use as my default address."
+          />
         </label>
       </div>
     </>

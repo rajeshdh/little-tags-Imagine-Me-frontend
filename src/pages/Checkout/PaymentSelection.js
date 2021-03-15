@@ -198,7 +198,7 @@ function PaymentSelection() {
                       <Link
                         to="thankyou"
                         type="button"
-                        className="flex text-white bg-sp-btn-primary border-0 py-3 px-14 sm:px-24 font-bold hover:bg-sp-btn-primary-dark rounded"
+                        className="w-full text-center text-white bg-sp-btn-primary border-0 py-3 px-14 sm:px-24 font-bold hover:bg-sp-btn-primary-dark rounded"
                       >
                         <FormattedMessage
                           id="proceedToPayment"
