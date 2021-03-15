@@ -30,7 +30,9 @@ const login = ({ email, password }) => (dispatch) => {
     .then((res) => {
       const user = {
         email: res.user.email,
-        uid: res.user.uid
+        uid: res.user.uid,
+        displayName: null,
+        photo: null
       }
       dispatch({
         type: LOGIN_SUCCESS,
@@ -44,12 +46,6 @@ const login = ({ email, password }) => (dispatch) => {
     });
 };
 
-const logoutUser = () => {
-  return {
-    type: LOGOUT_SUCCESS,
-  };
-};
-
 
 export const checkUserAlreadySignedIn = () => (dispatch) => {
   dispatch({ type: USER_LOADING })
@@ -58,7 +54,9 @@ export const checkUserAlreadySignedIn = () => (dispatch) => {
       // User is signed in.
       const user = {
         email: userData.email,
-        uid: userData.uid
+        uid: userData.uid,
+        displayName: null,
+        photo: null
       }
       dispatch({
         type: LOGIN_SUCCESS,
@@ -70,6 +68,13 @@ export const checkUserAlreadySignedIn = () => (dispatch) => {
         type: LOGIN_FAIL,
       });
     }
+  });
+}
+
+export const logoutUser = () => dispatch => {
+  auth.signOut().then(() => {
+    dispatch({ type: LOGIN_FAIL })
+  }).catch((error) => {
   });
 }
 

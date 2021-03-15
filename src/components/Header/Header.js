@@ -36,7 +36,7 @@ function Header() {
               </NavButton>
             </NavLink>
             <LanguageDropdown />
-            <NavLink className={isLoading ? 'animate-pulse' : ''} to={isAuthenticated ? "/profile" : "/login?redirect=/profile"}>
+            <NavLink className={isLoading ? 'animate-pulse' : ''} to={isAuthenticated ? "/profile" : "/login"}>
               <NavButton>
                 <LoginIcon />
                 {isLoading ? <div className="w-24 h-5 bg-gray-400"></div> : <span className="hidden truncate overflow-ellipse max-w-min md:inline-block" title={user?.email ? user.email : ''}>
