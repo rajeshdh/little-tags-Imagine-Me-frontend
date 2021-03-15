@@ -67,5 +67,11 @@
     "emailSent": "आपके आर्डर के बारे में विवरण सहित एक ईमेल रसीद प्रदान की गई ईमेल पते पर भेज दी गई है। कृपया इसे अपने रिकॉर्ड के लिए रखें।",
     "buyNow": "अभी खरीदें",
     "orderHistory" : "आदेश इतिहास",
-    "wishlist" : "तमन्ना"
+    "wishlist" : "तमन्ना",
+    "logout": "लॉग आउट",
+    "order history" : "आदेश हाय",
+    "View your cart" : "अपनी गाड़ी देखें",
+    "View your previous orders": "अपने पिछले आदेश देखें",
+    "View and manage your wishlist" : "अपनी इच्छा सूची देखें और प्रबंधित करें",
+    "Logout from your profile": "अपने प्रोफ़ाइल से लॉगआउट करें"
 }

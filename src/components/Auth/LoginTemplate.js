@@ -25,7 +25,7 @@ export default function LoginTemplate({ pageHeader,
   };
 
   return (
-    <div className="min-h-3/4 flex flex-col items-center justify-center bg-sp-white">
+    <div className="h-full pt-8 flex flex-col items-center justify-center bg-sp-white">
       <div className="flex flex-col bg-white shadow-lg px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
         <div className="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">
           <FormattedMessage id={pageHeader} />

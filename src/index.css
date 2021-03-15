@@ -17,10 +17,16 @@ body>div {
 .HomePage .slick-slide {
     height: inherit !important;
 }
-.HomePage .slick-list{
+
+.HomePage .slick-list {
     display: flex;
     height: 100%;
 }
-.HomePage .slick-list .slick-slide>div{
+
+.HomePage .slick-list .slick-slide>div {
     height: 100%;
+}
+
+.PageHeight {
+    min-height: calc(100% - 158px);
 }

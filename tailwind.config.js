@@ -9,10 +9,8 @@ module.exports = {
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
       height: {
-        'carousel-lg' : '32rem'
-      },
-      height: {
-        'carousel-lg' : '32rem'
+        'carousel-lg' : '32rem',
+        'carousel-xl' : '60rem'
       },
       colors: {
         "sp-white": "#FEFEFE", // sp - prefix for custom colors

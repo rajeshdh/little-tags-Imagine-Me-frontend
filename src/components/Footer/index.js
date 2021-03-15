@@ -4,15 +4,15 @@ import Logo from "../Header/Logo";
 
 function Footer() {
   return (
-    <footer class="text-gray-600 body-font">
-      <div class="px-3 py-3 mx-auto md:mx-24 flex items-center sm:flex-row flex-col">
+    <footer className="text-gray-600 body-font hidden sm:block">
+      <div className="px-3 py-3 mx-auto md:mx-24 flex items-center sm:flex-row flex-col">
         <Logo />
-        <p class="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">
+        <p className="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">
           Created By —
           <a
             href="https://twitter.com/paharihacker"
             rel="noopener noreferrer"
-            class="text-gray-600 ml-1"
+            className="text-gray-600 ml-1"
             target="_blank"
           >
             Rajesh Dhiman
@@ -21,7 +21,7 @@ function Footer() {
           <a
             href="https://twitter.com/paharihacker"
             rel="noopener noreferrer"
-            class="text-gray-600 ml-1"
+            className="text-gray-600 ml-1"
             target="_blank"
           >
             Prince Thomas
@@ -30,7 +30,7 @@ function Footer() {
           <a
             href="https://twitter.com/PestoTech"
             rel="noopener noreferrer"
-            class="text-gray-600 ml-1"
+            className="text-gray-600 ml-1"
             target="_blank"
           >
           Pesto

@@ -29,9 +29,11 @@ function App() {
   return (
     <IntlProvider locale={locale} messages={translation[locale]}>
       <Header></Header>
-      <Suspense fallback={<MainSpinner />}>
-        <Routes />
-      </Suspense>
+      <div className="PageHeight">
+        <Suspense fallback={<MainSpinner />}>
+          <Routes />
+        </Suspense>
+      </div>
       <Footer />
     </IntlProvider>
   );

@@ -42,11 +42,11 @@ export default function ProductCartCard({ product, increaseQuantity, decreaseQua
                 />
             </div>
             <div className="absolute flex w-full bottom-0">
-                <button test-id="product-cart-card-wishlist" onClick={() => moveToWishlist(id)} className="flex items-center uppercase group hover:text-sp-heading-blue pr-3 border-r border-gray-500">
+                <button test-id="product-cart-card-wishlist" onClick={() => moveToWishlist(id)} className="focus:outline-none flex items-center uppercase group hover:text-sp-heading-blue pr-3 border-r border-gray-500">
                     <HeartOutline className="fill-current mr-2 w-5 h-5 text-sp-text-default group-hover:text-sp-heading-blue" />
                     <FormattedMessage id="moveToWishlist" defaultMessage="Move to wishlist" />
                 </button>
-                <button test-id="product-cart-card-remove" onClick={() => removeCartItem(id)} className="flex items-center uppercase group hover:text-red-500 pl-3 border-gray-500">
+                <button test-id="product-cart-card-remove" onClick={() => removeCartItem(id)} className="focus:outline-none flex items-center uppercase group hover:text-red-500 pl-3 border-gray-500">
                     <DeleteIcon className="fill-current mr-2 w-5 h-5 text-sp-text-default group-hover:text-red-500" />
                     <FormattedMessage id="remove" defaultMessage="remove" />
                 </button>
