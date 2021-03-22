@@ -6,7 +6,6 @@ import {
   USER_LOADING,
 } from "./actionTypes";
 
-// import { auth } from "../../Utils/firebase";
 import { authAPI } from "../../Utils/auth";
 import { localStorageService } from "../../Utils/localStorageService";
 
