@@ -6,13 +6,14 @@ import {
   USER_LOADING,
 } from "./actionTypes";
 
-import { auth } from "../../Utils/firebase"
+import { authAPI } from "../../Utils/auth";
+import { localStorageService } from "../../Utils/localStorageService";
 
 //CHECK TOKEN AND LOAD USER
-const register = ({ email, password }) => (dispatch) => {
-  dispatch({ type: USER_LOADING })
-  auth
-    .createUserWithEmailAndPassword(email, password)
+const register = ({ email, password, name = "test" }) => (dispatch) => {
+  dispatch({ type: USER_LOADING });
+  authAPI
+    .register(email, password, name)
     .then((res) => {
       dispatch(login({ email, password }));
     })
@@ -24,16 +25,17 @@ const register = ({ email, password }) => (dispatch) => {
 };
 
 const login = ({ email, password }) => (dispatch) => {
-  dispatch({ type: USER_LOADING })
-  auth
-    .signInWithEmailAndPassword(email, password)
+  dispatch({ type: USER_LOADING });
+  authAPI
+    .login(email, password)
     .then((res) => {
       const user = {
-        email: res.user.email,
-        uid: res.user.uid,
+        email: res.data.user.email,
+        uid: res.data.user.id,
         displayName: null,
-        photo: null
-      }
+        photo: null,
+      };
+      localStorageService.setToken(res.data.tokens);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: user,
@@ -46,37 +48,45 @@ const login = ({ email, password }) => (dispatch) => {
     });
 };
 
-
 export const checkUserAlreadySignedIn = () => (dispatch) => {
-  dispatch({ type: USER_LOADING })
-  auth.onAuthStateChanged(function (userData) {
-    if (userData) {
-      // User is signed in.
-      const user = {
-        email: userData.email,
-        uid: userData.uid,
-        displayName: null,
-        photo: null
+  dispatch({ type: USER_LOADING });
+  authAPI
+    .authMe()
+    .then((userData) => {
+      if (userData) {
+        // User is signed in.
+        const user = {
+          email: userData.data.user.email,
+          uid: userData.data.user.id,
+          displayName: null,
+          photo: null,
+        };
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: user,
+        });
+      } else {
+        // No user is signed in.
+        dispatch({
+          type: LOGIN_FAIL,
+        });
       }
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: user,
-      });
-    } else {
-      // No user is signed in.
+    })
+    .catch((err) => {
       dispatch({
         type: LOGIN_FAIL,
       });
-    }
-  });
-}
+    });
+};
 
-export const logoutUser = () => dispatch => {
-  auth.signOut().then(() => {
-    dispatch({ type: LOGIN_FAIL })
-  }).catch((error) => {
-  });
-}
+export const logoutUser = () => (dispatch) => {
+  authAPI
+    .signOut()
+    .then(() => {
+      dispatch({ type: LOGIN_FAIL });
+    })
+    .catch((error) => {});
+};
 
 export const tokenConfig = (getState) => {
   const token = getState().auth.token;
@@ -98,7 +108,7 @@ const authActions = {
   register,
   login,
   logoutUser,
-  checkUserAlreadySignedIn
+  checkUserAlreadySignedIn,
 };
 
 export default authActions;

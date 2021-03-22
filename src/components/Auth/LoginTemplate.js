@@ -30,13 +30,13 @@ export default function LoginTemplate({ pageHeader,
         <div className="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">
           <FormattedMessage id={pageHeader} />
         </div>
-        <button
+        {/* <button
           className="relative mt-6 border rounded-md py-2 
 				text-sm bg-blue-800 hover:bg-blue-900 text-white focus:outline-none focus:shadow-outline">
 
           <span className="absolute left-0 top-0 flex items-center justify-center h-full w-10 text-blue-500"><i className="fab fa-facebook-f"></i></span>
           <span><FormattedMessage id={facebookButtonText} /></span>
-        </button>
+        </button> */}
         <div className="relative mt-10 h-px bg-gray-300">
           <div className="absolute left-0 top-0 flex justify-center w-full -mt-2">
             <span className="bg-white px-4 text-xs text-gray-500 uppercase">

@@ -90,7 +90,6 @@ function Checkout() {
   const saveAddress = (e) => {
     e.preventDefault();
     let id = Math.random();
-    console.log("saving");
     dispatch(addAddress({ ...formData, id }));
     dispatch(setSelectedAddress(id));
     setShowAddressForm(false);
