@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
+    "axios": "^0.21.1",
     "downshift": "^6.1.0",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.6.1",
